@@ -4,6 +4,7 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// schema.prisma
 generator client {
   provider = "prisma-client-js"
   output   = "../generated/prisma"
@@ -14,3 +15,111 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  password_hash String
+  name          String
+  created_at    DateTime @default(now())
+
+  threads       Thread[]       @relation("UserThreads")
+  reactions     Reaction[]
+  collections   Collection[]
+  bookmarks     Bookmark[]
+  notifications Notification[]
+}
+
+model Thread {
+  id                 String   @id @default(uuid())
+  title              String
+  tags               String[]
+  author_id          String
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+  is_published       Boolean
+  remix_of_thread_id String?
+
+  author        User     @relation("UserThreads", fields: [author_id], references: [id])
+  remixOfThread Thread?  @relation("ThreadRemix", fields: [remix_of_thread_id], references: [id])
+  remixes       Thread[] @relation("ThreadRemix")
+
+  segments      ThreadSegment[]
+  reactions     Reaction[]
+  bookmarks     Bookmark[]
+  notifications Notification[]
+}
+
+model ThreadSegment {
+  id          String  @id @default(uuid())
+  thread_id   String
+  order_index Int
+  content     String
+  image_url   String?
+
+  thread Thread @relation(fields: [thread_id], references: [id])
+}
+
+model Reaction {
+  id         String       @id @default(uuid())
+  user_id    String
+  thread_id  String
+  emoji      ReactionType
+  created_at DateTime     @default(now())
+
+  user   User   @relation(fields: [user_id], references: [id])
+  thread Thread @relation(fields: [thread_id], references: [id])
+
+  @@unique([user_id, thread_id])
+}
+
+model Collection {
+  id         String   @id @default(uuid())
+  user_id    String
+  name       String
+  is_private Boolean
+  created_at DateTime @default(now())
+
+  user      User       @relation(fields: [user_id], references: [id])
+  bookmarks Bookmark[]
+}
+
+model Bookmark {
+  id            String   @id @default(uuid())
+  user_id       String
+  thread_id     String
+  collection_id String?
+  created_at    DateTime @default(now())
+
+  user       User        @relation(fields: [user_id], references: [id])
+  thread     Thread      @relation(fields: [thread_id], references: [id])
+  collection Collection? @relation(fields: [collection_id], references: [id])
+
+  @@unique([user_id, thread_id])
+}
+
+model Notification {
+  id         String           @id @default(uuid())
+  user_id    String
+  type       NotificationType
+  thread_id  String?
+  created_at DateTime         @default(now())
+  is_read    Boolean          @default(false)
+
+  user   User    @relation(fields: [user_id], references: [id])
+  thread Thread? @relation(fields: [thread_id], references: [id])
+}
+
+enum ReactionType {
+  brain
+  fire
+  clap
+  eyes
+  warning
+}
+
+enum NotificationType {
+  new_comment
+  new_reaction
+  new_bookmark
+  new_remix
+}
