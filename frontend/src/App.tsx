@@ -1,34 +1,78 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import Layout from './components/Layout'
+import ProtectedRoute from './components/ProtectedRoute'
+
+// Pages
+import HomePage from './pages/Home'
+import LoginPage from './pages/Login'
+import SignupPage from './pages/Signup'
+import ThreadPage from './pages/Thread'
+import CreateThreadPage from './pages/CreateThread'
+import EditThreadPage from './pages/EditThread'
+import ProfilePage from './pages/Profile'
+import CollectionsPage from './pages/Collections'
+import CollectionDetailPage from './pages/CollectionDetail'
+import NotFoundPage from './pages/NotFound'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <AuthProvider>
+      <Routes>
+        <Route
+          path="/"
+          element={<Layout />}
+        >
+          {/* Public routes */}
+          <Route
+            index
+            element={<HomePage />}
+          />
+          <Route
+            path="login"
+            element={<LoginPage />}
+          />
+          <Route
+            path="signup"
+            element={<SignupPage />}
+          />
+          <Route
+            path="thread/:id"
+            element={<ThreadPage />}
+          />
+
+          {/* Protected routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route
+              path="create"
+              element={<CreateThreadPage />}
+            />
+            <Route
+              path="edit/:id"
+              element={<EditThreadPage />}
+            />
+            <Route
+              path="profile"
+              element={<ProfilePage />}
+            />
+            <Route
+              path="collections"
+              element={<CollectionsPage />}
+            />
+            <Route
+              path="collections/:id"
+              element={<CollectionDetailPage />}
+            />
+          </Route>
+
+          {/* 404 route */}
+          <Route
+            path="*"
+            element={<NotFoundPage />}
+          />
+        </Route>
+      </Routes>
+    </AuthProvider>
   )
 }
 
