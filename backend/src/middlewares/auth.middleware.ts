@@ -9,15 +9,16 @@ const authenticateToken = async (
   res: Response,
   next: NextFunction
 ) => {
-  const token = req.header('Authorization')?.replace('Bearer ', '')
-
+  const token = req.header('Authorization')?.split(' ')[1]
+  console.log(`Token from header: ${token}`)
   if (!token) {
     return next(new ApiError(401, 'No token provided'))
   }
 
   try {
-    const decoded: any = jwt.verify(token, process.env.JWT_SECRET!)
-
+    console.log(`hello from auth middleware`)
+    const decoded: any = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET!)
+    console.log('Decoded token:', decoded)
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
     })

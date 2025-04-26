@@ -57,7 +57,7 @@ model ThreadSegment {
   content     String
   image_url   String?
 
-  thread Thread @relation(fields: [thread_id], references: [id])
+  thread Thread @relation(fields: [thread_id], references: [id], onDelete: Cascade)
 }
 
 model Reaction {

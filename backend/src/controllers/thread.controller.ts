@@ -105,7 +105,7 @@ export const updateThreadHandler = asyncHandler(
       data: {
         title: title || existingThread.title,
         segments: {
-          deleteMany: {}, // remove all old segments
+          // deleteMany: {}, // remove all old segments
           create: (segments || []).map((content: string, index: number) => ({
             content,
             order_index: index,
@@ -167,7 +167,7 @@ export const deleteThreadHandler = asyncHandler(
       throw new ApiError(403, 'You are not allowed to delete this thread')
     }
 
-    await prisma.thread.delete({ where: { id } })
+    await prisma.thread.delete({ where: { id: id } })
 
     res
       .status(200)
