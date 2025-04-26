@@ -27,11 +27,10 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
-import { useToast } from '@/components/ui/use-toast'
+import { toast } from 'react-toastify'
 import { collectionService } from '../services/CollectionService'
 
 export default function CollectionsPage() {
-  const { toast } = useToast()
   const queryClient = useQueryClient()
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingCollection, setEditingCollection] = useState<any>(null)
@@ -50,9 +49,8 @@ export default function CollectionsPage() {
       queryClient.invalidateQueries({ queryKey: ['collections'] })
       setIsDialogOpen(false)
       resetForm()
-      toast({
-        title: 'Collection created',
-        description: 'Your collection has been created successfully.',
+      toast.success('Collection created successfully.', {
+        autoClose: 3000,
       })
     },
   })
@@ -64,9 +62,8 @@ export default function CollectionsPage() {
       queryClient.invalidateQueries({ queryKey: ['collections'] })
       setIsDialogOpen(false)
       resetForm()
-      toast({
-        title: 'Collection updated',
-        description: 'Your collection has been updated successfully.',
+      toast.success('Collection updated successfully.', {
+        autoClose: 3000,
       })
     },
   })
@@ -75,9 +72,8 @@ export default function CollectionsPage() {
     mutationFn: (id: string) => collectionService.deleteCollection(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['collections'] })
-      toast({
-        title: 'Collection deleted',
-        description: 'Your collection has been deleted successfully.',
+      toast.success('Collection deleted successfully.', {
+        autoClose: 3000,
       })
     },
   })
@@ -103,10 +99,8 @@ export default function CollectionsPage() {
     e.preventDefault()
 
     if (!collectionName.trim()) {
-      toast({
-        title: 'Error',
-        description: 'Please enter a collection name',
-        variant: 'destructive',
+      toast.error('Please enter a collection name.', {
+        autoClose: 3000,
       })
       return
     }

@@ -26,7 +26,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
-import { useToast } from '@/components/ui/use-toast'
+import { toast } from 'react-toastify' // Import from react-toastify
 import { useAuth } from '../context/AuthContext'
 import { useBookmark } from '../hooks/useBookmark'
 import ReactionButtons from '../components/ReactionButtons'
@@ -38,7 +38,6 @@ export default function ThreadPage() {
   const { id } = useParams<{ id: string }>()
   const { user } = useAuth()
   const navigate = useNavigate()
-  const { toast } = useToast()
   const queryClient = useQueryClient()
   const [commentText, setCommentText] = useState('')
 
@@ -54,9 +53,12 @@ export default function ThreadPage() {
     mutationFn: () => threadService.deleteThread(id!),
     onSuccess: () => {
       navigate('/')
-      toast({
-        title: 'Thread deleted',
-        description: 'Your thread has been deleted successfully.',
+      toast.success('Thread deleted', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
       })
     },
   })
@@ -65,9 +67,12 @@ export default function ThreadPage() {
     mutationFn: () => threadService.remixThread(id!),
     onSuccess: (newThreadId) => {
       navigate(`/edit/${newThreadId}`)
-      toast({
-        title: 'Thread remixed',
-        description: 'You can now edit your remixed version.',
+      toast.success('Thread remixed', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
       })
     },
   })
@@ -77,9 +82,12 @@ export default function ThreadPage() {
     onSuccess: () => {
       setCommentText('')
       queryClient.invalidateQueries({ queryKey: ['thread', id] })
-      toast({
-        title: 'Comment added',
-        description: 'Your comment has been added successfully.',
+      toast.success('Comment added', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
       })
     },
   })
@@ -88,9 +96,12 @@ export default function ThreadPage() {
     mutationFn: (commentId: string) => commentService.deleteComment(commentId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['thread', id] })
-      toast({
-        title: 'Comment deleted',
-        description: 'Your comment has been deleted successfully.',
+      toast.success('Comment deleted', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
       })
     },
   })
@@ -182,9 +193,12 @@ export default function ThreadPage() {
                   onClick={() => {
                     // Copy URL to clipboard
                     navigator.clipboard.writeText(window.location.href)
-                    toast({
-                      title: 'Link copied',
-                      description: 'Thread link copied to clipboard',
+                    toast.success('Link copied', {
+                      position: 'top-right',
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      draggable: true,
                     })
                   }}
                 >

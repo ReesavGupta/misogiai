@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { toast } from 'react-toastify'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -15,7 +16,6 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { useToast } from '@/components/ui/use-toast'
 import { useAuth } from '../context/AuthContext'
 
 const signupSchema = z
@@ -36,7 +36,6 @@ type SignupFormValues = z.infer<typeof signupSchema>
 
 export default function SignupPage() {
   const { signup } = useAuth()
-  const { toast } = useToast()
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -56,16 +55,9 @@ export default function SignupPage() {
       await signup(data.name, data.email, data.password)
       navigate('/')
 
-      toast({
-        title: 'Account created!',
-        description: 'Welcome to ThreadSpire.',
-      })
+      toast.success('Welcome to ThreadSpire! Account created successfully.')
     } catch (error) {
-      toast({
-        title: 'Signup failed',
-        description: 'This email may already be in use.',
-        variant: 'destructive',
-      })
+      toast.error('Signup failed. This email may already be in use.')
     } finally {
       setIsLoading(false)
     }

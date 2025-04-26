@@ -14,10 +14,15 @@ import ProfilePage from './pages/Profile'
 import CollectionsPage from './pages/Collections'
 import CollectionDetailPage from './pages/CollectionDetail'
 import NotFoundPage from './pages/NotFound'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   return (
     <AuthProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+      />
       <Routes>
         <Route
           path="/"

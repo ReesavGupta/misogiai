@@ -5,6 +5,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { toast } from 'react-toastify'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -15,7 +16,6 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { useToast } from '@/components/ui/use-toast'
 import { useAuth } from '../context/AuthContext'
 
 const loginSchema = z.object({
@@ -29,7 +29,6 @@ type LoginFormValues = z.infer<typeof loginSchema>
 
 export default function LoginPage() {
   const { login } = useAuth()
-  const { toast } = useToast()
   const navigate = useNavigate()
   const location = useLocation()
   const [isLoading, setIsLoading] = useState(false)
@@ -51,16 +50,9 @@ export default function LoginPage() {
       const from = location.state?.from?.pathname || '/'
       navigate(from, { replace: true })
 
-      toast({
-        title: 'Welcome back!',
-        description: 'You have successfully logged in.',
-      })
+      toast.success('You have successfully logged in.')
     } catch (error) {
-      toast({
-        title: 'Login failed',
-        description: 'Invalid email or password. Please try again.',
-        variant: 'destructive',
-      })
+      toast.error('Invalid email or password. Please try again.')
     } finally {
       setIsLoading(false)
     }

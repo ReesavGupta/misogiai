@@ -2,8 +2,8 @@
 
 import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery, useMutation } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
 import { Button } from '@/components/ui/button'
-import { useToast } from '@/components/ui/use-toast'
 import ThreadEditor from '../components/ThreadEditor'
 import { threadService } from '../services/ThreadService'
 import type { Thread } from '../types/index'
@@ -11,7 +11,6 @@ import type { Thread } from '../types/index'
 export default function EditThreadPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const { toast } = useToast()
 
   const { data: thread, isLoading: isLoadingThread } = useQuery({
     queryKey: ['thread', id, 'edit'],
@@ -23,18 +22,11 @@ export default function EditThreadPage() {
     mutationFn: (data: { thread: Partial<Thread>; publish: boolean }) =>
       threadService.updateThread(id!, data.thread, data.publish),
     onSuccess: () => {
-      toast({
-        title: 'Thread updated',
-        description: 'Your thread has been updated successfully.',
-      })
+      toast.success('Your thread has been updated successfully.')
       navigate(`/thread/${id}`)
     },
     onError: () => {
-      toast({
-        title: 'Error',
-        description: 'Failed to update thread. Please try again.',
-        variant: 'destructive',
-      })
+      toast.error('Failed to update thread. Please try again.')
     },
   })
 

@@ -2,12 +2,11 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { reactionService } from '../services/ReactionService'
-import { useToast } from '@/components/ui/use-toast'
 import type { ReactionType } from '../types/index'
+import { toast } from 'react-toastify'
 
 export function useReaction(threadId: string) {
   const queryClient = useQueryClient()
-  const { toast } = useToast()
 
   const addReactionMutation = useMutation({
     mutationFn: (emoji: ReactionType) =>
@@ -17,10 +16,8 @@ export function useReaction(threadId: string) {
       queryClient.invalidateQueries({ queryKey: ['threads'] })
     },
     onError: () => {
-      toast({
-        title: 'Error',
-        description: 'Failed to add reaction',
-        variant: 'destructive',
+      toast.error('Failed to add reaction', {
+        autoClose: 3000,
       })
     },
   })
@@ -32,10 +29,8 @@ export function useReaction(threadId: string) {
       queryClient.invalidateQueries({ queryKey: ['threads'] })
     },
     onError: () => {
-      toast({
-        title: 'Error',
-        description: 'Failed to remove reaction',
-        variant: 'destructive',
+      toast.error('Failed to remove reaction', {
+        autoClose: 3000,
       })
     },
   })
