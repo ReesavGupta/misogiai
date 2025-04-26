@@ -122,26 +122,53 @@ export const logoutHandler = asyncHandler(
     res.json(ApiResponse.success({ message: 'Logged out successfully' }))
   }
 )
-
 export const refreshTokenHandler = asyncHandler(
   async (req: Request, res: Response) => {
-    const refreshToken = req.cookies.refreshToken
-    if (!refreshToken) throw new ApiError(401, 'No refresh token provided')
+    const oldRefreshToken = req.cookies.refreshToken
+    if (!oldRefreshToken) throw new ApiError(401, 'No refresh token provided')
 
-    const storedRefreshToken = await prisma.refreshToken.findUnique({
-      where: { token: refreshToken },
+    const storedToken = await prisma.refreshToken.findFirst({
+      where: { token: oldRefreshToken },
     })
-    if (!storedRefreshToken) throw new ApiError(401, 'Invalid refresh token')
+
+    if (!storedToken) throw new ApiError(401, 'Invalid refresh token')
 
     try {
-      // Verify the refresh token and generate a new access token
-      const decoded: any = jwt.verify(refreshToken, process.env.JWT_SECRET!)
+      // Use REFRESH_TOKEN_SECRET instead of JWT_SECRET
+      const decoded: any = jwt.verify(
+        oldRefreshToken,
+        process.env.REFRESH_TOKEN_SECRET!
+      )
       const payload = { userId: decoded.userId }
 
-      const accessToken = generateAccessToken(payload)
+      // Delete only the specific token used
+      await prisma.refreshToken.delete({
+        where: { id: storedToken.id },
+      })
 
-      res.json(ApiResponse.success({ accessToken })) // now we respondd with new access token
+      // Generate new tokens
+      const newAccessToken = generateAccessToken(payload)
+      const newRefreshToken = generateRefreshToken(payload)
+
+      // Save new refresh token
+      await prisma.refreshToken.create({
+        data: {
+          user_id: decoded.userId,
+          token: newRefreshToken,
+        },
+      })
+
+      // Set the new refresh token cookie
+      res.cookie('refreshToken', newRefreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      })
+
+      res.json(ApiResponse.success({ accessToken: newAccessToken }))
     } catch (error) {
+      console.error('JWT verification error:', error)
       throw new ApiError(401, 'Invalid refresh token')
     }
   }
