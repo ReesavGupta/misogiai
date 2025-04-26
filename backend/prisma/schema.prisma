@@ -27,6 +27,7 @@ model User {
   collections   Collection[]
   bookmarks     Bookmark[]
   notifications Notification[]
+  RefreshToken  RefreshToken[]
 }
 
 model Thread {
@@ -107,6 +108,16 @@ model Notification {
 
   user   User    @relation(fields: [user_id], references: [id])
   thread Thread? @relation(fields: [thread_id], references: [id])
+}
+
+model RefreshToken {
+  id         String   @id @default(uuid())
+  user_id    String
+  token      String   @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user User @relation(fields: [user_id], references: [id])
 }
 
 enum ReactionType {

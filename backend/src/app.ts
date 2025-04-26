@@ -10,8 +10,13 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+// Import routes
+import indexRouter from './routes/index.router'
+
+app.use('/api', indexRouter)
 
 
 export default app

@@ -177,6 +177,14 @@ exports.Prisma.NotificationScalarFieldEnum = {
   is_read: 'is_read'
 };
 
+exports.Prisma.RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  token: 'token',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -213,7 +221,8 @@ exports.Prisma.ModelName = {
   Reaction: 'Reaction',
   Collection: 'Collection',
   Bookmark: 'Bookmark',
-  Notification: 'Notification'
+  Notification: 'Notification',
+  RefreshToken: 'RefreshToken'
 };
 
 /**
