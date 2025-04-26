@@ -168,13 +168,13 @@ exports.Prisma.BookmarkScalarFieldEnum = {
   created_at: 'created_at'
 };
 
-exports.Prisma.NotificationScalarFieldEnum = {
+exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
-  type: 'type',
   thread_id: 'thread_id',
+  content: 'content',
   created_at: 'created_at',
-  is_read: 'is_read'
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.RefreshTokenScalarFieldEnum = {
@@ -207,13 +207,6 @@ exports.ReactionType = exports.$Enums.ReactionType = {
   warning: 'warning'
 };
 
-exports.NotificationType = exports.$Enums.NotificationType = {
-  new_comment: 'new_comment',
-  new_reaction: 'new_reaction',
-  new_bookmark: 'new_bookmark',
-  new_remix: 'new_remix'
-};
-
 exports.Prisma.ModelName = {
   User: 'User',
   Thread: 'Thread',
@@ -221,7 +214,7 @@ exports.Prisma.ModelName = {
   Reaction: 'Reaction',
   Collection: 'Collection',
   Bookmark: 'Bookmark',
-  Notification: 'Notification',
+  Comment: 'Comment',
   RefreshToken: 'RefreshToken'
 };
 

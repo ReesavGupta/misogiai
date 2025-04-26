@@ -22,12 +22,12 @@ model User {
   name          String
   created_at    DateTime @default(now())
 
-  threads       Thread[]       @relation("UserThreads")
-  reactions     Reaction[]
-  collections   Collection[]
-  bookmarks     Bookmark[]
-  notifications Notification[]
-  RefreshToken  RefreshToken[]
+  threads      Thread[]       @relation("UserThreads")
+  reactions    Reaction[]
+  collections  Collection[]
+  bookmarks    Bookmark[]
+  comments     Comment[]
+  RefreshToken RefreshToken[]
 }
 
 model Thread {
@@ -44,10 +44,10 @@ model Thread {
   remixOfThread Thread?  @relation("ThreadRemix", fields: [remix_of_thread_id], references: [id])
   remixes       Thread[] @relation("ThreadRemix")
 
-  segments      ThreadSegment[]
-  reactions     Reaction[]
-  bookmarks     Bookmark[]
-  notifications Notification[]
+  segments  ThreadSegment[]
+  reactions Reaction[]
+  bookmarks Bookmark[]
+  comments  Comment[]
 }
 
 model ThreadSegment {
@@ -98,16 +98,16 @@ model Bookmark {
   @@unique([user_id, thread_id])
 }
 
-model Notification {
-  id         String           @id @default(uuid())
+model Comment {
+  id         String   @id @default(uuid())
   user_id    String
-  type       NotificationType
-  thread_id  String?
-  created_at DateTime         @default(now())
-  is_read    Boolean          @default(false)
+  thread_id  String
+  content    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
-  user   User    @relation(fields: [user_id], references: [id])
-  thread Thread? @relation(fields: [thread_id], references: [id])
+  user   User   @relation(fields: [user_id], references: [id])
+  thread Thread @relation(fields: [thread_id], references: [id])
 }
 
 model RefreshToken {
@@ -126,11 +126,4 @@ enum ReactionType {
   clap
   eyes
   warning
-}
-
-enum NotificationType {
-  new_comment
-  new_reaction
-  new_bookmark
-  new_remix
 }

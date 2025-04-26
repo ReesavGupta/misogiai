@@ -44,10 +44,10 @@ export type Collection = $Result.DefaultSelection<Prisma.$CollectionPayload>
  */
 export type Bookmark = $Result.DefaultSelection<Prisma.$BookmarkPayload>
 /**
- * Model Notification
+ * Model Comment
  * 
  */
-export type Notification = $Result.DefaultSelection<Prisma.$NotificationPayload>
+export type Comment = $Result.DefaultSelection<Prisma.$CommentPayload>
 /**
  * Model RefreshToken
  * 
@@ -68,25 +68,11 @@ export namespace $Enums {
 
 export type ReactionType = (typeof ReactionType)[keyof typeof ReactionType]
 
-
-export const NotificationType: {
-  new_comment: 'new_comment',
-  new_reaction: 'new_reaction',
-  new_bookmark: 'new_bookmark',
-  new_remix: 'new_remix'
-};
-
-export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
-
 }
 
 export type ReactionType = $Enums.ReactionType
 
 export const ReactionType: typeof $Enums.ReactionType
-
-export type NotificationType = $Enums.NotificationType
-
-export const NotificationType: typeof $Enums.NotificationType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -274,14 +260,14 @@ export class PrismaClient<
   get bookmark(): Prisma.BookmarkDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.notification`: Exposes CRUD operations for the **Notification** model.
+   * `prisma.comment`: Exposes CRUD operations for the **Comment** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Notifications
-    * const notifications = await prisma.notification.findMany()
+    * // Fetch zero or more Comments
+    * const comments = await prisma.comment.findMany()
     * ```
     */
-  get notification(): Prisma.NotificationDelegate<ExtArgs, ClientOptions>;
+  get comment(): Prisma.CommentDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.refreshToken`: Exposes CRUD operations for the **RefreshToken** model.
@@ -738,7 +724,7 @@ export namespace Prisma {
     Reaction: 'Reaction',
     Collection: 'Collection',
     Bookmark: 'Bookmark',
-    Notification: 'Notification',
+    Comment: 'Comment',
     RefreshToken: 'RefreshToken'
   };
 
@@ -758,7 +744,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "thread" | "threadSegment" | "reaction" | "collection" | "bookmark" | "notification" | "refreshToken"
+      modelProps: "user" | "thread" | "threadSegment" | "reaction" | "collection" | "bookmark" | "comment" | "refreshToken"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1206,77 +1192,77 @@ export namespace Prisma {
           }
         }
       }
-      Notification: {
-        payload: Prisma.$NotificationPayload<ExtArgs>
-        fields: Prisma.NotificationFieldRefs
+      Comment: {
+        payload: Prisma.$CommentPayload<ExtArgs>
+        fields: Prisma.CommentFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.NotificationFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload> | null
+            args: Prisma.CommentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.NotificationFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+            args: Prisma.CommentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
           }
           findFirst: {
-            args: Prisma.NotificationFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload> | null
+            args: Prisma.CommentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.NotificationFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+            args: Prisma.CommentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
           }
           findMany: {
-            args: Prisma.NotificationFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+            args: Prisma.CommentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
           }
           create: {
-            args: Prisma.NotificationCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+            args: Prisma.CommentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
           }
           createMany: {
-            args: Prisma.NotificationCreateManyArgs<ExtArgs>
+            args: Prisma.CommentCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.NotificationCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+            args: Prisma.CommentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
           }
           delete: {
-            args: Prisma.NotificationDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+            args: Prisma.CommentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
           }
           update: {
-            args: Prisma.NotificationUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+            args: Prisma.CommentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
           }
           deleteMany: {
-            args: Prisma.NotificationDeleteManyArgs<ExtArgs>
+            args: Prisma.CommentDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.NotificationUpdateManyArgs<ExtArgs>
+            args: Prisma.CommentUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.NotificationUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+            args: Prisma.CommentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
           }
           upsert: {
-            args: Prisma.NotificationUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+            args: Prisma.CommentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
           }
           aggregate: {
-            args: Prisma.NotificationAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateNotification>
+            args: Prisma.CommentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComment>
           }
           groupBy: {
-            args: Prisma.NotificationGroupByArgs<ExtArgs>
-            result: $Utils.Optional<NotificationGroupByOutputType>[]
+            args: Prisma.CommentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CommentGroupByOutputType>[]
           }
           count: {
-            args: Prisma.NotificationCountArgs<ExtArgs>
-            result: $Utils.Optional<NotificationCountAggregateOutputType> | number
+            args: Prisma.CommentCountArgs<ExtArgs>
+            result: $Utils.Optional<CommentCountAggregateOutputType> | number
           }
         }
       }
@@ -1444,7 +1430,7 @@ export namespace Prisma {
     reaction?: ReactionOmit
     collection?: CollectionOmit
     bookmark?: BookmarkOmit
-    notification?: NotificationOmit
+    comment?: CommentOmit
     refreshToken?: RefreshTokenOmit
   }
 
@@ -1544,7 +1530,7 @@ export namespace Prisma {
     reactions: number
     collections: number
     bookmarks: number
-    notifications: number
+    comments: number
     RefreshToken: number
   }
 
@@ -1553,7 +1539,7 @@ export namespace Prisma {
     reactions?: boolean | UserCountOutputTypeCountReactionsArgs
     collections?: boolean | UserCountOutputTypeCountCollectionsArgs
     bookmarks?: boolean | UserCountOutputTypeCountBookmarksArgs
-    notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
+    comments?: boolean | UserCountOutputTypeCountCommentsArgs
     RefreshToken?: boolean | UserCountOutputTypeCountRefreshTokenArgs
   }
 
@@ -1599,8 +1585,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: NotificationWhereInput
+  export type UserCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
   }
 
   /**
@@ -1620,7 +1606,7 @@ export namespace Prisma {
     segments: number
     reactions: number
     bookmarks: number
-    notifications: number
+    comments: number
   }
 
   export type ThreadCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1628,7 +1614,7 @@ export namespace Prisma {
     segments?: boolean | ThreadCountOutputTypeCountSegmentsArgs
     reactions?: boolean | ThreadCountOutputTypeCountReactionsArgs
     bookmarks?: boolean | ThreadCountOutputTypeCountBookmarksArgs
-    notifications?: boolean | ThreadCountOutputTypeCountNotificationsArgs
+    comments?: boolean | ThreadCountOutputTypeCountCommentsArgs
   }
 
   // Custom InputTypes
@@ -1673,8 +1659,8 @@ export namespace Prisma {
   /**
    * ThreadCountOutputType without action
    */
-  export type ThreadCountOutputTypeCountNotificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: NotificationWhereInput
+  export type ThreadCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
   }
 
 
@@ -1881,7 +1867,7 @@ export namespace Prisma {
     reactions?: boolean | User$reactionsArgs<ExtArgs>
     collections?: boolean | User$collectionsArgs<ExtArgs>
     bookmarks?: boolean | User$bookmarksArgs<ExtArgs>
-    notifications?: boolean | User$notificationsArgs<ExtArgs>
+    comments?: boolean | User$commentsArgs<ExtArgs>
     RefreshToken?: boolean | User$RefreshTokenArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1916,7 +1902,7 @@ export namespace Prisma {
     reactions?: boolean | User$reactionsArgs<ExtArgs>
     collections?: boolean | User$collectionsArgs<ExtArgs>
     bookmarks?: boolean | User$bookmarksArgs<ExtArgs>
-    notifications?: boolean | User$notificationsArgs<ExtArgs>
+    comments?: boolean | User$commentsArgs<ExtArgs>
     RefreshToken?: boolean | User$RefreshTokenArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -1930,7 +1916,7 @@ export namespace Prisma {
       reactions: Prisma.$ReactionPayload<ExtArgs>[]
       collections: Prisma.$CollectionPayload<ExtArgs>[]
       bookmarks: Prisma.$BookmarkPayload<ExtArgs>[]
-      notifications: Prisma.$NotificationPayload<ExtArgs>[]
+      comments: Prisma.$CommentPayload<ExtArgs>[]
       RefreshToken: Prisma.$RefreshTokenPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2337,7 +2323,7 @@ export namespace Prisma {
     reactions<T extends User$reactionsArgs<ExtArgs> = {}>(args?: Subset<T, User$reactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     collections<T extends User$collectionsArgs<ExtArgs> = {}>(args?: Subset<T, User$collectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     bookmarks<T extends User$bookmarksArgs<ExtArgs> = {}>(args?: Subset<T, User$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    notifications<T extends User$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    comments<T extends User$commentsArgs<ExtArgs> = {}>(args?: Subset<T, User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     RefreshToken<T extends User$RefreshTokenArgs<ExtArgs> = {}>(args?: Subset<T, User$RefreshTokenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2857,27 +2843,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.notifications
+   * User.comments
    */
-  export type User$notificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
-    where?: NotificationWhereInput
-    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
-    cursor?: NotificationWhereUniqueInput
+    include?: CommentInclude<ExtArgs> | null
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    cursor?: CommentWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
   }
 
   /**
@@ -3113,7 +3099,7 @@ export namespace Prisma {
     segments?: boolean | Thread$segmentsArgs<ExtArgs>
     reactions?: boolean | Thread$reactionsArgs<ExtArgs>
     bookmarks?: boolean | Thread$bookmarksArgs<ExtArgs>
-    notifications?: boolean | Thread$notificationsArgs<ExtArgs>
+    comments?: boolean | Thread$commentsArgs<ExtArgs>
     _count?: boolean | ThreadCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["thread"]>
 
@@ -3162,7 +3148,7 @@ export namespace Prisma {
     segments?: boolean | Thread$segmentsArgs<ExtArgs>
     reactions?: boolean | Thread$reactionsArgs<ExtArgs>
     bookmarks?: boolean | Thread$bookmarksArgs<ExtArgs>
-    notifications?: boolean | Thread$notificationsArgs<ExtArgs>
+    comments?: boolean | Thread$commentsArgs<ExtArgs>
     _count?: boolean | ThreadCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ThreadIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3183,7 +3169,7 @@ export namespace Prisma {
       segments: Prisma.$ThreadSegmentPayload<ExtArgs>[]
       reactions: Prisma.$ReactionPayload<ExtArgs>[]
       bookmarks: Prisma.$BookmarkPayload<ExtArgs>[]
-      notifications: Prisma.$NotificationPayload<ExtArgs>[]
+      comments: Prisma.$CommentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3594,7 +3580,7 @@ export namespace Prisma {
     segments<T extends Thread$segmentsArgs<ExtArgs> = {}>(args?: Subset<T, Thread$segmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ThreadSegmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reactions<T extends Thread$reactionsArgs<ExtArgs> = {}>(args?: Subset<T, Thread$reactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     bookmarks<T extends Thread$bookmarksArgs<ExtArgs> = {}>(args?: Subset<T, Thread$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    notifications<T extends Thread$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, Thread$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    comments<T extends Thread$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Thread$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4143,27 +4129,27 @@ export namespace Prisma {
   }
 
   /**
-   * Thread.notifications
+   * Thread.comments
    */
-  export type Thread$notificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Thread$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
-    where?: NotificationWhereInput
-    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
-    cursor?: NotificationWhereUniqueInput
+    include?: CommentInclude<ExtArgs> | null
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    cursor?: CommentWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
   }
 
   /**
@@ -8525,369 +8511,369 @@ export namespace Prisma {
 
 
   /**
-   * Model Notification
+   * Model Comment
    */
 
-  export type AggregateNotification = {
-    _count: NotificationCountAggregateOutputType | null
-    _min: NotificationMinAggregateOutputType | null
-    _max: NotificationMaxAggregateOutputType | null
+  export type AggregateComment = {
+    _count: CommentCountAggregateOutputType | null
+    _min: CommentMinAggregateOutputType | null
+    _max: CommentMaxAggregateOutputType | null
   }
 
-  export type NotificationMinAggregateOutputType = {
+  export type CommentMinAggregateOutputType = {
     id: string | null
     user_id: string | null
-    type: $Enums.NotificationType | null
     thread_id: string | null
+    content: string | null
     created_at: Date | null
-    is_read: boolean | null
+    updated_at: Date | null
   }
 
-  export type NotificationMaxAggregateOutputType = {
+  export type CommentMaxAggregateOutputType = {
     id: string | null
     user_id: string | null
-    type: $Enums.NotificationType | null
     thread_id: string | null
+    content: string | null
     created_at: Date | null
-    is_read: boolean | null
+    updated_at: Date | null
   }
 
-  export type NotificationCountAggregateOutputType = {
+  export type CommentCountAggregateOutputType = {
     id: number
     user_id: number
-    type: number
     thread_id: number
+    content: number
     created_at: number
-    is_read: number
+    updated_at: number
     _all: number
   }
 
 
-  export type NotificationMinAggregateInputType = {
+  export type CommentMinAggregateInputType = {
     id?: true
     user_id?: true
-    type?: true
     thread_id?: true
+    content?: true
     created_at?: true
-    is_read?: true
+    updated_at?: true
   }
 
-  export type NotificationMaxAggregateInputType = {
+  export type CommentMaxAggregateInputType = {
     id?: true
     user_id?: true
-    type?: true
     thread_id?: true
+    content?: true
     created_at?: true
-    is_read?: true
+    updated_at?: true
   }
 
-  export type NotificationCountAggregateInputType = {
+  export type CommentCountAggregateInputType = {
     id?: true
     user_id?: true
-    type?: true
     thread_id?: true
+    content?: true
     created_at?: true
-    is_read?: true
+    updated_at?: true
     _all?: true
   }
 
-  export type NotificationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Notification to aggregate.
+     * Filter which Comment to aggregate.
      */
-    where?: NotificationWhereInput
+    where?: CommentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Notifications to fetch.
+     * Determine the order of Comments to fetch.
      */
-    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: NotificationWhereUniqueInput
+    cursor?: CommentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Notifications from the position of the cursor.
+     * Take `±n` Comments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Notifications.
+     * Skip the first `n` Comments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Notifications
+     * Count returned Comments
     **/
-    _count?: true | NotificationCountAggregateInputType
+    _count?: true | CommentCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: NotificationMinAggregateInputType
+    _min?: CommentMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: NotificationMaxAggregateInputType
+    _max?: CommentMaxAggregateInputType
   }
 
-  export type GetNotificationAggregateType<T extends NotificationAggregateArgs> = {
-        [P in keyof T & keyof AggregateNotification]: P extends '_count' | 'count'
+  export type GetCommentAggregateType<T extends CommentAggregateArgs> = {
+        [P in keyof T & keyof AggregateComment]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateNotification[P]>
-      : GetScalarType<T[P], AggregateNotification[P]>
+        : GetScalarType<T[P], AggregateComment[P]>
+      : GetScalarType<T[P], AggregateComment[P]>
   }
 
 
 
 
-  export type NotificationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: NotificationWhereInput
-    orderBy?: NotificationOrderByWithAggregationInput | NotificationOrderByWithAggregationInput[]
-    by: NotificationScalarFieldEnum[] | NotificationScalarFieldEnum
-    having?: NotificationScalarWhereWithAggregatesInput
+  export type CommentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithAggregationInput | CommentOrderByWithAggregationInput[]
+    by: CommentScalarFieldEnum[] | CommentScalarFieldEnum
+    having?: CommentScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: NotificationCountAggregateInputType | true
-    _min?: NotificationMinAggregateInputType
-    _max?: NotificationMaxAggregateInputType
+    _count?: CommentCountAggregateInputType | true
+    _min?: CommentMinAggregateInputType
+    _max?: CommentMaxAggregateInputType
   }
 
-  export type NotificationGroupByOutputType = {
+  export type CommentGroupByOutputType = {
     id: string
     user_id: string
-    type: $Enums.NotificationType
-    thread_id: string | null
+    thread_id: string
+    content: string
     created_at: Date
-    is_read: boolean
-    _count: NotificationCountAggregateOutputType | null
-    _min: NotificationMinAggregateOutputType | null
-    _max: NotificationMaxAggregateOutputType | null
+    updated_at: Date
+    _count: CommentCountAggregateOutputType | null
+    _min: CommentMinAggregateOutputType | null
+    _max: CommentMaxAggregateOutputType | null
   }
 
-  type GetNotificationGroupByPayload<T extends NotificationGroupByArgs> = Prisma.PrismaPromise<
+  type GetCommentGroupByPayload<T extends CommentGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<NotificationGroupByOutputType, T['by']> &
+      PickEnumerable<CommentGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof NotificationGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CommentGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], NotificationGroupByOutputType[P]>
-            : GetScalarType<T[P], NotificationGroupByOutputType[P]>
+              : GetScalarType<T[P], CommentGroupByOutputType[P]>
+            : GetScalarType<T[P], CommentGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type NotificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CommentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_id?: boolean
-    type?: boolean
     thread_id?: boolean
+    content?: boolean
     created_at?: boolean
-    is_read?: boolean
+    updated_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    thread?: boolean | Notification$threadArgs<ExtArgs>
-  }, ExtArgs["result"]["notification"]>
+    thread?: boolean | ThreadDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
 
-  export type NotificationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CommentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_id?: boolean
-    type?: boolean
     thread_id?: boolean
+    content?: boolean
     created_at?: boolean
-    is_read?: boolean
+    updated_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    thread?: boolean | Notification$threadArgs<ExtArgs>
-  }, ExtArgs["result"]["notification"]>
+    thread?: boolean | ThreadDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
 
-  export type NotificationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CommentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_id?: boolean
-    type?: boolean
     thread_id?: boolean
+    content?: boolean
     created_at?: boolean
-    is_read?: boolean
+    updated_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    thread?: boolean | Notification$threadArgs<ExtArgs>
-  }, ExtArgs["result"]["notification"]>
+    thread?: boolean | ThreadDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
 
-  export type NotificationSelectScalar = {
+  export type CommentSelectScalar = {
     id?: boolean
     user_id?: boolean
-    type?: boolean
     thread_id?: boolean
+    content?: boolean
     created_at?: boolean
-    is_read?: boolean
+    updated_at?: boolean
   }
 
-  export type NotificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "type" | "thread_id" | "created_at" | "is_read", ExtArgs["result"]["notification"]>
-  export type NotificationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "thread_id" | "content" | "created_at" | "updated_at", ExtArgs["result"]["comment"]>
+  export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    thread?: boolean | Notification$threadArgs<ExtArgs>
+    thread?: boolean | ThreadDefaultArgs<ExtArgs>
   }
-  export type NotificationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    thread?: boolean | Notification$threadArgs<ExtArgs>
+    thread?: boolean | ThreadDefaultArgs<ExtArgs>
   }
-  export type NotificationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    thread?: boolean | Notification$threadArgs<ExtArgs>
+    thread?: boolean | ThreadDefaultArgs<ExtArgs>
   }
 
-  export type $NotificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Notification"
+  export type $CommentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Comment"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      thread: Prisma.$ThreadPayload<ExtArgs> | null
+      thread: Prisma.$ThreadPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       user_id: string
-      type: $Enums.NotificationType
-      thread_id: string | null
+      thread_id: string
+      content: string
       created_at: Date
-      is_read: boolean
-    }, ExtArgs["result"]["notification"]>
+      updated_at: Date
+    }, ExtArgs["result"]["comment"]>
     composites: {}
   }
 
-  type NotificationGetPayload<S extends boolean | null | undefined | NotificationDefaultArgs> = $Result.GetResult<Prisma.$NotificationPayload, S>
+  type CommentGetPayload<S extends boolean | null | undefined | CommentDefaultArgs> = $Result.GetResult<Prisma.$CommentPayload, S>
 
-  type NotificationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<NotificationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: NotificationCountAggregateInputType | true
+  type CommentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CommentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CommentCountAggregateInputType | true
     }
 
-  export interface NotificationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Notification'], meta: { name: 'Notification' } }
+  export interface CommentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Comment'], meta: { name: 'Comment' } }
     /**
-     * Find zero or one Notification that matches the filter.
-     * @param {NotificationFindUniqueArgs} args - Arguments to find a Notification
+     * Find zero or one Comment that matches the filter.
+     * @param {CommentFindUniqueArgs} args - Arguments to find a Comment
      * @example
-     * // Get one Notification
-     * const notification = await prisma.notification.findUnique({
+     * // Get one Comment
+     * const comment = await prisma.comment.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends NotificationFindUniqueArgs>(args: SelectSubset<T, NotificationFindUniqueArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CommentFindUniqueArgs>(args: SelectSubset<T, CommentFindUniqueArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Notification that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Comment that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {NotificationFindUniqueOrThrowArgs} args - Arguments to find a Notification
+     * @param {CommentFindUniqueOrThrowArgs} args - Arguments to find a Comment
      * @example
-     * // Get one Notification
-     * const notification = await prisma.notification.findUniqueOrThrow({
+     * // Get one Comment
+     * const comment = await prisma.comment.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends NotificationFindUniqueOrThrowArgs>(args: SelectSubset<T, NotificationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CommentFindUniqueOrThrowArgs>(args: SelectSubset<T, CommentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Notification that matches the filter.
+     * Find the first Comment that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NotificationFindFirstArgs} args - Arguments to find a Notification
+     * @param {CommentFindFirstArgs} args - Arguments to find a Comment
      * @example
-     * // Get one Notification
-     * const notification = await prisma.notification.findFirst({
+     * // Get one Comment
+     * const comment = await prisma.comment.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends NotificationFindFirstArgs>(args?: SelectSubset<T, NotificationFindFirstArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CommentFindFirstArgs>(args?: SelectSubset<T, CommentFindFirstArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Notification that matches the filter or
+     * Find the first Comment that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NotificationFindFirstOrThrowArgs} args - Arguments to find a Notification
+     * @param {CommentFindFirstOrThrowArgs} args - Arguments to find a Comment
      * @example
-     * // Get one Notification
-     * const notification = await prisma.notification.findFirstOrThrow({
+     * // Get one Comment
+     * const comment = await prisma.comment.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends NotificationFindFirstOrThrowArgs>(args?: SelectSubset<T, NotificationFindFirstOrThrowArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CommentFindFirstOrThrowArgs>(args?: SelectSubset<T, CommentFindFirstOrThrowArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Notifications that matches the filter.
+     * Find zero or more Comments that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NotificationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {CommentFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Notifications
-     * const notifications = await prisma.notification.findMany()
+     * // Get all Comments
+     * const comments = await prisma.comment.findMany()
      * 
-     * // Get first 10 Notifications
-     * const notifications = await prisma.notification.findMany({ take: 10 })
+     * // Get first 10 Comments
+     * const comments = await prisma.comment.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const notificationWithIdOnly = await prisma.notification.findMany({ select: { id: true } })
+     * const commentWithIdOnly = await prisma.comment.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends NotificationFindManyArgs>(args?: SelectSubset<T, NotificationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CommentFindManyArgs>(args?: SelectSubset<T, CommentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Notification.
-     * @param {NotificationCreateArgs} args - Arguments to create a Notification.
+     * Create a Comment.
+     * @param {CommentCreateArgs} args - Arguments to create a Comment.
      * @example
-     * // Create one Notification
-     * const Notification = await prisma.notification.create({
+     * // Create one Comment
+     * const Comment = await prisma.comment.create({
      *   data: {
-     *     // ... data to create a Notification
+     *     // ... data to create a Comment
      *   }
      * })
      * 
      */
-    create<T extends NotificationCreateArgs>(args: SelectSubset<T, NotificationCreateArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CommentCreateArgs>(args: SelectSubset<T, CommentCreateArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Notifications.
-     * @param {NotificationCreateManyArgs} args - Arguments to create many Notifications.
+     * Create many Comments.
+     * @param {CommentCreateManyArgs} args - Arguments to create many Comments.
      * @example
-     * // Create many Notifications
-     * const notification = await prisma.notification.createMany({
+     * // Create many Comments
+     * const comment = await prisma.comment.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends NotificationCreateManyArgs>(args?: SelectSubset<T, NotificationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends CommentCreateManyArgs>(args?: SelectSubset<T, CommentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Notifications and returns the data saved in the database.
-     * @param {NotificationCreateManyAndReturnArgs} args - Arguments to create many Notifications.
+     * Create many Comments and returns the data saved in the database.
+     * @param {CommentCreateManyAndReturnArgs} args - Arguments to create many Comments.
      * @example
-     * // Create many Notifications
-     * const notification = await prisma.notification.createManyAndReturn({
+     * // Create many Comments
+     * const comment = await prisma.comment.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Notifications and only return the `id`
-     * const notificationWithIdOnly = await prisma.notification.createManyAndReturn({
+     * // Create many Comments and only return the `id`
+     * const commentWithIdOnly = await prisma.comment.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -8897,28 +8883,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends NotificationCreateManyAndReturnArgs>(args?: SelectSubset<T, NotificationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends CommentCreateManyAndReturnArgs>(args?: SelectSubset<T, CommentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Notification.
-     * @param {NotificationDeleteArgs} args - Arguments to delete one Notification.
+     * Delete a Comment.
+     * @param {CommentDeleteArgs} args - Arguments to delete one Comment.
      * @example
-     * // Delete one Notification
-     * const Notification = await prisma.notification.delete({
+     * // Delete one Comment
+     * const Comment = await prisma.comment.delete({
      *   where: {
-     *     // ... filter to delete one Notification
+     *     // ... filter to delete one Comment
      *   }
      * })
      * 
      */
-    delete<T extends NotificationDeleteArgs>(args: SelectSubset<T, NotificationDeleteArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CommentDeleteArgs>(args: SelectSubset<T, CommentDeleteArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Notification.
-     * @param {NotificationUpdateArgs} args - Arguments to update one Notification.
+     * Update one Comment.
+     * @param {CommentUpdateArgs} args - Arguments to update one Comment.
      * @example
-     * // Update one Notification
-     * const notification = await prisma.notification.update({
+     * // Update one Comment
+     * const comment = await prisma.comment.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8928,30 +8914,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends NotificationUpdateArgs>(args: SelectSubset<T, NotificationUpdateArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CommentUpdateArgs>(args: SelectSubset<T, CommentUpdateArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Notifications.
-     * @param {NotificationDeleteManyArgs} args - Arguments to filter Notifications to delete.
+     * Delete zero or more Comments.
+     * @param {CommentDeleteManyArgs} args - Arguments to filter Comments to delete.
      * @example
-     * // Delete a few Notifications
-     * const { count } = await prisma.notification.deleteMany({
+     * // Delete a few Comments
+     * const { count } = await prisma.comment.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends NotificationDeleteManyArgs>(args?: SelectSubset<T, NotificationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends CommentDeleteManyArgs>(args?: SelectSubset<T, CommentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Notifications.
+     * Update zero or more Comments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NotificationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CommentUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Notifications
-     * const notification = await prisma.notification.updateMany({
+     * // Update many Comments
+     * const comment = await prisma.comment.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8961,14 +8947,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends NotificationUpdateManyArgs>(args: SelectSubset<T, NotificationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends CommentUpdateManyArgs>(args: SelectSubset<T, CommentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Notifications and returns the data updated in the database.
-     * @param {NotificationUpdateManyAndReturnArgs} args - Arguments to update many Notifications.
+     * Update zero or more Comments and returns the data updated in the database.
+     * @param {CommentUpdateManyAndReturnArgs} args - Arguments to update many Comments.
      * @example
-     * // Update many Notifications
-     * const notification = await prisma.notification.updateManyAndReturn({
+     * // Update many Comments
+     * const comment = await prisma.comment.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8977,8 +8963,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Notifications and only return the `id`
-     * const notificationWithIdOnly = await prisma.notification.updateManyAndReturn({
+     * // Update zero or more Comments and only return the `id`
+     * const commentWithIdOnly = await prisma.comment.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -8991,56 +8977,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends NotificationUpdateManyAndReturnArgs>(args: SelectSubset<T, NotificationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends CommentUpdateManyAndReturnArgs>(args: SelectSubset<T, CommentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Notification.
-     * @param {NotificationUpsertArgs} args - Arguments to update or create a Notification.
+     * Create or update one Comment.
+     * @param {CommentUpsertArgs} args - Arguments to update or create a Comment.
      * @example
-     * // Update or create a Notification
-     * const notification = await prisma.notification.upsert({
+     * // Update or create a Comment
+     * const comment = await prisma.comment.upsert({
      *   create: {
-     *     // ... data to create a Notification
+     *     // ... data to create a Comment
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Notification we want to update
+     *     // ... the filter for the Comment we want to update
      *   }
      * })
      */
-    upsert<T extends NotificationUpsertArgs>(args: SelectSubset<T, NotificationUpsertArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CommentUpsertArgs>(args: SelectSubset<T, CommentUpsertArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Notifications.
+     * Count the number of Comments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NotificationCountArgs} args - Arguments to filter Notifications to count.
+     * @param {CommentCountArgs} args - Arguments to filter Comments to count.
      * @example
-     * // Count the number of Notifications
-     * const count = await prisma.notification.count({
+     * // Count the number of Comments
+     * const count = await prisma.comment.count({
      *   where: {
-     *     // ... the filter for the Notifications we want to count
+     *     // ... the filter for the Comments we want to count
      *   }
      * })
     **/
-    count<T extends NotificationCountArgs>(
-      args?: Subset<T, NotificationCountArgs>,
+    count<T extends CommentCountArgs>(
+      args?: Subset<T, CommentCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], NotificationCountAggregateOutputType>
+          : GetScalarType<T['select'], CommentCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Notification.
+     * Allows you to perform aggregations operations on a Comment.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NotificationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CommentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -9060,13 +9046,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends NotificationAggregateArgs>(args: Subset<T, NotificationAggregateArgs>): Prisma.PrismaPromise<GetNotificationAggregateType<T>>
+    aggregate<T extends CommentAggregateArgs>(args: Subset<T, CommentAggregateArgs>): Prisma.PrismaPromise<GetCommentAggregateType<T>>
 
     /**
-     * Group by Notification.
+     * Group by Comment.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NotificationGroupByArgs} args - Group by arguments.
+     * @param {CommentGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -9081,14 +9067,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends NotificationGroupByArgs,
+      T extends CommentGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: NotificationGroupByArgs['orderBy'] }
-        : { orderBy?: NotificationGroupByArgs['orderBy'] },
+        ? { orderBy: CommentGroupByArgs['orderBy'] }
+        : { orderBy?: CommentGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -9137,23 +9123,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, NotificationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNotificationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CommentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Notification model
+   * Fields of the Comment model
    */
-  readonly fields: NotificationFieldRefs;
+  readonly fields: CommentFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Notification.
+   * The delegate class that acts as a "Promise-like" for Comment.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__NotificationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CommentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    thread<T extends Notification$threadArgs<ExtArgs> = {}>(args?: Subset<T, Notification$threadArgs<ExtArgs>>): Prisma__ThreadClient<$Result.GetResult<Prisma.$ThreadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    thread<T extends ThreadDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ThreadDefaultArgs<ExtArgs>>): Prisma__ThreadClient<$Result.GetResult<Prisma.$ThreadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9180,445 +9166,426 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Notification model
+   * Fields of the Comment model
    */
-  interface NotificationFieldRefs {
-    readonly id: FieldRef<"Notification", 'String'>
-    readonly user_id: FieldRef<"Notification", 'String'>
-    readonly type: FieldRef<"Notification", 'NotificationType'>
-    readonly thread_id: FieldRef<"Notification", 'String'>
-    readonly created_at: FieldRef<"Notification", 'DateTime'>
-    readonly is_read: FieldRef<"Notification", 'Boolean'>
+  interface CommentFieldRefs {
+    readonly id: FieldRef<"Comment", 'String'>
+    readonly user_id: FieldRef<"Comment", 'String'>
+    readonly thread_id: FieldRef<"Comment", 'String'>
+    readonly content: FieldRef<"Comment", 'String'>
+    readonly created_at: FieldRef<"Comment", 'DateTime'>
+    readonly updated_at: FieldRef<"Comment", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Notification findUnique
+   * Comment findUnique
    */
-  export type NotificationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
+    include?: CommentInclude<ExtArgs> | null
     /**
-     * Filter, which Notification to fetch.
+     * Filter, which Comment to fetch.
      */
-    where: NotificationWhereUniqueInput
+    where: CommentWhereUniqueInput
   }
 
   /**
-   * Notification findUniqueOrThrow
+   * Comment findUniqueOrThrow
    */
-  export type NotificationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
+    include?: CommentInclude<ExtArgs> | null
     /**
-     * Filter, which Notification to fetch.
+     * Filter, which Comment to fetch.
      */
-    where: NotificationWhereUniqueInput
+    where: CommentWhereUniqueInput
   }
 
   /**
-   * Notification findFirst
+   * Comment findFirst
    */
-  export type NotificationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
+    include?: CommentInclude<ExtArgs> | null
     /**
-     * Filter, which Notification to fetch.
+     * Filter, which Comment to fetch.
      */
-    where?: NotificationWhereInput
+    where?: CommentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Notifications to fetch.
+     * Determine the order of Comments to fetch.
      */
-    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Notifications.
+     * Sets the position for searching for Comments.
      */
-    cursor?: NotificationWhereUniqueInput
+    cursor?: CommentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Notifications from the position of the cursor.
+     * Take `±n` Comments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Notifications.
+     * Skip the first `n` Comments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Notifications.
+     * Filter by unique combinations of Comments.
      */
-    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
   }
 
   /**
-   * Notification findFirstOrThrow
+   * Comment findFirstOrThrow
    */
-  export type NotificationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
+    include?: CommentInclude<ExtArgs> | null
     /**
-     * Filter, which Notification to fetch.
+     * Filter, which Comment to fetch.
      */
-    where?: NotificationWhereInput
+    where?: CommentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Notifications to fetch.
+     * Determine the order of Comments to fetch.
      */
-    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Notifications.
+     * Sets the position for searching for Comments.
      */
-    cursor?: NotificationWhereUniqueInput
+    cursor?: CommentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Notifications from the position of the cursor.
+     * Take `±n` Comments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Notifications.
+     * Skip the first `n` Comments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Notifications.
+     * Filter by unique combinations of Comments.
      */
-    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
   }
 
   /**
-   * Notification findMany
+   * Comment findMany
    */
-  export type NotificationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
+    include?: CommentInclude<ExtArgs> | null
     /**
-     * Filter, which Notifications to fetch.
+     * Filter, which Comments to fetch.
      */
-    where?: NotificationWhereInput
+    where?: CommentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Notifications to fetch.
+     * Determine the order of Comments to fetch.
      */
-    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Notifications.
+     * Sets the position for listing Comments.
      */
-    cursor?: NotificationWhereUniqueInput
+    cursor?: CommentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Notifications from the position of the cursor.
+     * Take `±n` Comments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Notifications.
+     * Skip the first `n` Comments.
      */
     skip?: number
-    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
   }
 
   /**
-   * Notification create
+   * Comment create
    */
-  export type NotificationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
+    include?: CommentInclude<ExtArgs> | null
     /**
-     * The data needed to create a Notification.
+     * The data needed to create a Comment.
      */
-    data: XOR<NotificationCreateInput, NotificationUncheckedCreateInput>
+    data: XOR<CommentCreateInput, CommentUncheckedCreateInput>
   }
 
   /**
-   * Notification createMany
+   * Comment createMany
    */
-  export type NotificationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Notifications.
+     * The data used to create many Comments.
      */
-    data: NotificationCreateManyInput | NotificationCreateManyInput[]
+    data: CommentCreateManyInput | CommentCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Notification createManyAndReturn
+   * Comment createManyAndReturn
    */
-  export type NotificationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelectCreateManyAndReturn<ExtArgs> | null
+    select?: CommentSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
-     * The data used to create many Notifications.
+     * The data used to create many Comments.
      */
-    data: NotificationCreateManyInput | NotificationCreateManyInput[]
+    data: CommentCreateManyInput | CommentCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: CommentIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Notification update
+   * Comment update
    */
-  export type NotificationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
+    include?: CommentInclude<ExtArgs> | null
     /**
-     * The data needed to update a Notification.
+     * The data needed to update a Comment.
      */
-    data: XOR<NotificationUpdateInput, NotificationUncheckedUpdateInput>
+    data: XOR<CommentUpdateInput, CommentUncheckedUpdateInput>
     /**
-     * Choose, which Notification to update.
+     * Choose, which Comment to update.
      */
-    where: NotificationWhereUniqueInput
+    where: CommentWhereUniqueInput
   }
 
   /**
-   * Notification updateMany
+   * Comment updateMany
    */
-  export type NotificationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Notifications.
+     * The data used to update Comments.
      */
-    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyInput>
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyInput>
     /**
-     * Filter which Notifications to update
+     * Filter which Comments to update
      */
-    where?: NotificationWhereInput
+    where?: CommentWhereInput
     /**
-     * Limit how many Notifications to update.
+     * Limit how many Comments to update.
      */
     limit?: number
   }
 
   /**
-   * Notification updateManyAndReturn
+   * Comment updateManyAndReturn
    */
-  export type NotificationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: CommentSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
-     * The data used to update Notifications.
+     * The data used to update Comments.
      */
-    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyInput>
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyInput>
     /**
-     * Filter which Notifications to update
+     * Filter which Comments to update
      */
-    where?: NotificationWhereInput
+    where?: CommentWhereInput
     /**
-     * Limit how many Notifications to update.
+     * Limit how many Comments to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: CommentIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Notification upsert
+   * Comment upsert
    */
-  export type NotificationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
+    include?: CommentInclude<ExtArgs> | null
     /**
-     * The filter to search for the Notification to update in case it exists.
+     * The filter to search for the Comment to update in case it exists.
      */
-    where: NotificationWhereUniqueInput
+    where: CommentWhereUniqueInput
     /**
-     * In case the Notification found by the `where` argument doesn't exist, create a new Notification with this data.
+     * In case the Comment found by the `where` argument doesn't exist, create a new Comment with this data.
      */
-    create: XOR<NotificationCreateInput, NotificationUncheckedCreateInput>
+    create: XOR<CommentCreateInput, CommentUncheckedCreateInput>
     /**
-     * In case the Notification was found with the provided `where` argument, update it with this data.
+     * In case the Comment was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<NotificationUpdateInput, NotificationUncheckedUpdateInput>
+    update: XOR<CommentUpdateInput, CommentUncheckedUpdateInput>
   }
 
   /**
-   * Notification delete
+   * Comment delete
    */
-  export type NotificationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Notification
+     * Select specific fields to fetch from the Comment
      */
-    select?: NotificationSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Notification
+     * Omit specific fields from the Comment
      */
-    omit?: NotificationOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NotificationInclude<ExtArgs> | null
+    include?: CommentInclude<ExtArgs> | null
     /**
-     * Filter which Notification to delete.
+     * Filter which Comment to delete.
      */
-    where: NotificationWhereUniqueInput
+    where: CommentWhereUniqueInput
   }
 
   /**
-   * Notification deleteMany
+   * Comment deleteMany
    */
-  export type NotificationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Notifications to delete
+     * Filter which Comments to delete
      */
-    where?: NotificationWhereInput
+    where?: CommentWhereInput
     /**
-     * Limit how many Notifications to delete.
+     * Limit how many Comments to delete.
      */
     limit?: number
   }
 
   /**
-   * Notification.thread
+   * Comment without action
    */
-  export type Notification$threadArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CommentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Thread
+     * Select specific fields to fetch from the Comment
      */
-    select?: ThreadSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Thread
+     * Omit specific fields from the Comment
      */
-    omit?: ThreadOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ThreadInclude<ExtArgs> | null
-    where?: ThreadWhereInput
-  }
-
-  /**
-   * Notification without action
-   */
-  export type NotificationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Notification
-     */
-    select?: NotificationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Notification
-     */
-    omit?: NotificationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: NotificationInclude<ExtArgs> | null
+    include?: CommentInclude<ExtArgs> | null
   }
 
 
@@ -10763,16 +10730,16 @@ export namespace Prisma {
   export type BookmarkScalarFieldEnum = (typeof BookmarkScalarFieldEnum)[keyof typeof BookmarkScalarFieldEnum]
 
 
-  export const NotificationScalarFieldEnum: {
+  export const CommentScalarFieldEnum: {
     id: 'id',
     user_id: 'user_id',
-    type: 'type',
     thread_id: 'thread_id',
+    content: 'content',
     created_at: 'created_at',
-    is_read: 'is_read'
+    updated_at: 'updated_at'
   };
 
-  export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+  export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
 
 
   export const RefreshTokenScalarFieldEnum: {
@@ -10879,20 +10846,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'NotificationType'
-   */
-  export type EnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationType'>
-    
-
-
-  /**
-   * Reference to a field of type 'NotificationType[]'
-   */
-  export type ListEnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationType[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -10922,7 +10875,7 @@ export namespace Prisma {
     reactions?: ReactionListRelationFilter
     collections?: CollectionListRelationFilter
     bookmarks?: BookmarkListRelationFilter
-    notifications?: NotificationListRelationFilter
+    comments?: CommentListRelationFilter
     RefreshToken?: RefreshTokenListRelationFilter
   }
 
@@ -10936,7 +10889,7 @@ export namespace Prisma {
     reactions?: ReactionOrderByRelationAggregateInput
     collections?: CollectionOrderByRelationAggregateInput
     bookmarks?: BookmarkOrderByRelationAggregateInput
-    notifications?: NotificationOrderByRelationAggregateInput
+    comments?: CommentOrderByRelationAggregateInput
     RefreshToken?: RefreshTokenOrderByRelationAggregateInput
   }
 
@@ -10953,7 +10906,7 @@ export namespace Prisma {
     reactions?: ReactionListRelationFilter
     collections?: CollectionListRelationFilter
     bookmarks?: BookmarkListRelationFilter
-    notifications?: NotificationListRelationFilter
+    comments?: CommentListRelationFilter
     RefreshToken?: RefreshTokenListRelationFilter
   }, "id" | "email">
 
@@ -10997,7 +10950,7 @@ export namespace Prisma {
     segments?: ThreadSegmentListRelationFilter
     reactions?: ReactionListRelationFilter
     bookmarks?: BookmarkListRelationFilter
-    notifications?: NotificationListRelationFilter
+    comments?: CommentListRelationFilter
   }
 
   export type ThreadOrderByWithRelationInput = {
@@ -11015,7 +10968,7 @@ export namespace Prisma {
     segments?: ThreadSegmentOrderByRelationAggregateInput
     reactions?: ReactionOrderByRelationAggregateInput
     bookmarks?: BookmarkOrderByRelationAggregateInput
-    notifications?: NotificationOrderByRelationAggregateInput
+    comments?: CommentOrderByRelationAggregateInput
   }
 
   export type ThreadWhereUniqueInput = Prisma.AtLeast<{
@@ -11036,7 +10989,7 @@ export namespace Prisma {
     segments?: ThreadSegmentListRelationFilter
     reactions?: ReactionListRelationFilter
     bookmarks?: BookmarkListRelationFilter
-    notifications?: NotificationListRelationFilter
+    comments?: CommentListRelationFilter
   }, "id">
 
   export type ThreadOrderByWithAggregationInput = {
@@ -11303,67 +11256,67 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"Bookmark"> | Date | string
   }
 
-  export type NotificationWhereInput = {
-    AND?: NotificationWhereInput | NotificationWhereInput[]
-    OR?: NotificationWhereInput[]
-    NOT?: NotificationWhereInput | NotificationWhereInput[]
-    id?: StringFilter<"Notification"> | string
-    user_id?: StringFilter<"Notification"> | string
-    type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
-    thread_id?: StringNullableFilter<"Notification"> | string | null
-    created_at?: DateTimeFilter<"Notification"> | Date | string
-    is_read?: BoolFilter<"Notification"> | boolean
+  export type CommentWhereInput = {
+    AND?: CommentWhereInput | CommentWhereInput[]
+    OR?: CommentWhereInput[]
+    NOT?: CommentWhereInput | CommentWhereInput[]
+    id?: StringFilter<"Comment"> | string
+    user_id?: StringFilter<"Comment"> | string
+    thread_id?: StringFilter<"Comment"> | string
+    content?: StringFilter<"Comment"> | string
+    created_at?: DateTimeFilter<"Comment"> | Date | string
+    updated_at?: DateTimeFilter<"Comment"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    thread?: XOR<ThreadNullableScalarRelationFilter, ThreadWhereInput> | null
+    thread?: XOR<ThreadScalarRelationFilter, ThreadWhereInput>
   }
 
-  export type NotificationOrderByWithRelationInput = {
+  export type CommentOrderByWithRelationInput = {
     id?: SortOrder
     user_id?: SortOrder
-    type?: SortOrder
-    thread_id?: SortOrderInput | SortOrder
+    thread_id?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
-    is_read?: SortOrder
+    updated_at?: SortOrder
     user?: UserOrderByWithRelationInput
     thread?: ThreadOrderByWithRelationInput
   }
 
-  export type NotificationWhereUniqueInput = Prisma.AtLeast<{
+  export type CommentWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: NotificationWhereInput | NotificationWhereInput[]
-    OR?: NotificationWhereInput[]
-    NOT?: NotificationWhereInput | NotificationWhereInput[]
-    user_id?: StringFilter<"Notification"> | string
-    type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
-    thread_id?: StringNullableFilter<"Notification"> | string | null
-    created_at?: DateTimeFilter<"Notification"> | Date | string
-    is_read?: BoolFilter<"Notification"> | boolean
+    AND?: CommentWhereInput | CommentWhereInput[]
+    OR?: CommentWhereInput[]
+    NOT?: CommentWhereInput | CommentWhereInput[]
+    user_id?: StringFilter<"Comment"> | string
+    thread_id?: StringFilter<"Comment"> | string
+    content?: StringFilter<"Comment"> | string
+    created_at?: DateTimeFilter<"Comment"> | Date | string
+    updated_at?: DateTimeFilter<"Comment"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    thread?: XOR<ThreadNullableScalarRelationFilter, ThreadWhereInput> | null
+    thread?: XOR<ThreadScalarRelationFilter, ThreadWhereInput>
   }, "id">
 
-  export type NotificationOrderByWithAggregationInput = {
+  export type CommentOrderByWithAggregationInput = {
     id?: SortOrder
     user_id?: SortOrder
-    type?: SortOrder
-    thread_id?: SortOrderInput | SortOrder
+    thread_id?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
-    is_read?: SortOrder
-    _count?: NotificationCountOrderByAggregateInput
-    _max?: NotificationMaxOrderByAggregateInput
-    _min?: NotificationMinOrderByAggregateInput
+    updated_at?: SortOrder
+    _count?: CommentCountOrderByAggregateInput
+    _max?: CommentMaxOrderByAggregateInput
+    _min?: CommentMinOrderByAggregateInput
   }
 
-  export type NotificationScalarWhereWithAggregatesInput = {
-    AND?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
-    OR?: NotificationScalarWhereWithAggregatesInput[]
-    NOT?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Notification"> | string
-    user_id?: StringWithAggregatesFilter<"Notification"> | string
-    type?: EnumNotificationTypeWithAggregatesFilter<"Notification"> | $Enums.NotificationType
-    thread_id?: StringNullableWithAggregatesFilter<"Notification"> | string | null
-    created_at?: DateTimeWithAggregatesFilter<"Notification"> | Date | string
-    is_read?: BoolWithAggregatesFilter<"Notification"> | boolean
+  export type CommentScalarWhereWithAggregatesInput = {
+    AND?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
+    OR?: CommentScalarWhereWithAggregatesInput[]
+    NOT?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Comment"> | string
+    user_id?: StringWithAggregatesFilter<"Comment"> | string
+    thread_id?: StringWithAggregatesFilter<"Comment"> | string
+    content?: StringWithAggregatesFilter<"Comment"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
   }
 
   export type RefreshTokenWhereInput = {
@@ -11431,7 +11384,7 @@ export namespace Prisma {
     reactions?: ReactionCreateNestedManyWithoutUserInput
     collections?: CollectionCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkCreateNestedManyWithoutUserInput
-    notifications?: NotificationCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
     RefreshToken?: RefreshTokenCreateNestedManyWithoutUserInput
   }
 
@@ -11445,7 +11398,7 @@ export namespace Prisma {
     reactions?: ReactionUncheckedCreateNestedManyWithoutUserInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutUserInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     RefreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -11459,7 +11412,7 @@ export namespace Prisma {
     reactions?: ReactionUpdateManyWithoutUserNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
     RefreshToken?: RefreshTokenUpdateManyWithoutUserNestedInput
   }
 
@@ -11473,7 +11426,7 @@ export namespace Prisma {
     reactions?: ReactionUncheckedUpdateManyWithoutUserNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     RefreshToken?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -11514,7 +11467,7 @@ export namespace Prisma {
     segments?: ThreadSegmentCreateNestedManyWithoutThreadInput
     reactions?: ReactionCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkCreateNestedManyWithoutThreadInput
-    notifications?: NotificationCreateNestedManyWithoutThreadInput
+    comments?: CommentCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadUncheckedCreateInput = {
@@ -11530,7 +11483,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUncheckedCreateNestedManyWithoutThreadInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutThreadInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutThreadInput
+    comments?: CommentUncheckedCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadUpdateInput = {
@@ -11546,7 +11499,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUpdateManyWithoutThreadNestedInput
     reactions?: ReactionUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUpdateManyWithoutThreadNestedInput
+    comments?: CommentUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadUncheckedUpdateInput = {
@@ -11562,7 +11515,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUncheckedUpdateManyWithoutThreadNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutThreadNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadCreateManyInput = {
@@ -11817,65 +11770,65 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NotificationCreateInput = {
+  export type CommentCreateInput = {
     id?: string
-    type: $Enums.NotificationType
+    content: string
     created_at?: Date | string
-    is_read?: boolean
-    user: UserCreateNestedOneWithoutNotificationsInput
-    thread?: ThreadCreateNestedOneWithoutNotificationsInput
+    updated_at?: Date | string
+    user: UserCreateNestedOneWithoutCommentsInput
+    thread: ThreadCreateNestedOneWithoutCommentsInput
   }
 
-  export type NotificationUncheckedCreateInput = {
-    id?: string
-    user_id: string
-    type: $Enums.NotificationType
-    thread_id?: string | null
-    created_at?: Date | string
-    is_read?: boolean
-  }
-
-  export type NotificationUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_read?: BoolFieldUpdateOperationsInput | boolean
-    user?: UserUpdateOneRequiredWithoutNotificationsNestedInput
-    thread?: ThreadUpdateOneWithoutNotificationsNestedInput
-  }
-
-  export type NotificationUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
-    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    thread_id?: NullableStringFieldUpdateOperationsInput | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_read?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type NotificationCreateManyInput = {
+  export type CommentUncheckedCreateInput = {
     id?: string
     user_id: string
-    type: $Enums.NotificationType
-    thread_id?: string | null
+    thread_id: string
+    content: string
     created_at?: Date | string
-    is_read?: boolean
+    updated_at?: Date | string
   }
 
-  export type NotificationUpdateManyMutationInput = {
+  export type CommentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_read?: BoolFieldUpdateOperationsInput | boolean
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCommentsNestedInput
+    thread?: ThreadUpdateOneRequiredWithoutCommentsNestedInput
   }
 
-  export type NotificationUncheckedUpdateManyInput = {
+  export type CommentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    thread_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thread_id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_read?: BoolFieldUpdateOperationsInput | boolean
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentCreateManyInput = {
+    id?: string
+    user_id: string
+    thread_id: string
+    content: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type CommentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    thread_id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RefreshTokenCreateInput = {
@@ -11983,10 +11936,10 @@ export namespace Prisma {
     none?: BookmarkWhereInput
   }
 
-  export type NotificationListRelationFilter = {
-    every?: NotificationWhereInput
-    some?: NotificationWhereInput
-    none?: NotificationWhereInput
+  export type CommentListRelationFilter = {
+    every?: CommentWhereInput
+    some?: CommentWhereInput
+    none?: CommentWhereInput
   }
 
   export type RefreshTokenListRelationFilter = {
@@ -12011,7 +11964,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type NotificationOrderByRelationAggregateInput = {
+  export type CommentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12353,48 +12306,31 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type EnumNotificationTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumNotificationTypeFilter<$PrismaModel> | $Enums.NotificationType
-  }
-
-  export type NotificationCountOrderByAggregateInput = {
+  export type CommentCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
-    type?: SortOrder
     thread_id?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
-    is_read?: SortOrder
+    updated_at?: SortOrder
   }
 
-  export type NotificationMaxOrderByAggregateInput = {
+  export type CommentMaxOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
-    type?: SortOrder
     thread_id?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
-    is_read?: SortOrder
+    updated_at?: SortOrder
   }
 
-  export type NotificationMinOrderByAggregateInput = {
+  export type CommentMinOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
-    type?: SortOrder
     thread_id?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
-    is_read?: SortOrder
-  }
-
-  export type EnumNotificationTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumNotificationTypeWithAggregatesFilter<$PrismaModel> | $Enums.NotificationType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumNotificationTypeFilter<$PrismaModel>
-    _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
+    updated_at?: SortOrder
   }
 
   export type RefreshTokenCountOrderByAggregateInput = {
@@ -12449,11 +12385,11 @@ export namespace Prisma {
     connect?: BookmarkWhereUniqueInput | BookmarkWhereUniqueInput[]
   }
 
-  export type NotificationCreateNestedManyWithoutUserInput = {
-    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
-    createMany?: NotificationCreateManyUserInputEnvelope
-    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  export type CommentCreateNestedManyWithoutUserInput = {
+    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
+    createMany?: CommentCreateManyUserInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
   export type RefreshTokenCreateNestedManyWithoutUserInput = {
@@ -12491,11 +12427,11 @@ export namespace Prisma {
     connect?: BookmarkWhereUniqueInput | BookmarkWhereUniqueInput[]
   }
 
-  export type NotificationUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
-    createMany?: NotificationCreateManyUserInputEnvelope
-    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  export type CommentUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
+    createMany?: CommentCreateManyUserInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
   export type RefreshTokenUncheckedCreateNestedManyWithoutUserInput = {
@@ -12569,18 +12505,18 @@ export namespace Prisma {
     deleteMany?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
   }
 
-  export type NotificationUpdateManyWithoutUserNestedInput = {
-    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
-    upsert?: NotificationUpsertWithWhereUniqueWithoutUserInput | NotificationUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: NotificationCreateManyUserInputEnvelope
-    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    update?: NotificationUpdateWithWhereUniqueWithoutUserInput | NotificationUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: NotificationUpdateManyWithWhereWithoutUserInput | NotificationUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  export type CommentUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutUserInput | CommentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CommentCreateManyUserInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutUserInput | CommentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutUserInput | CommentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
   export type RefreshTokenUpdateManyWithoutUserNestedInput = {
@@ -12653,18 +12589,18 @@ export namespace Prisma {
     deleteMany?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
   }
 
-  export type NotificationUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
-    upsert?: NotificationUpsertWithWhereUniqueWithoutUserInput | NotificationUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: NotificationCreateManyUserInputEnvelope
-    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    update?: NotificationUpdateWithWhereUniqueWithoutUserInput | NotificationUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: NotificationUpdateManyWithWhereWithoutUserInput | NotificationUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  export type CommentUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutUserInput | CommentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CommentCreateManyUserInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutUserInput | CommentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutUserInput | CommentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
   export type RefreshTokenUncheckedUpdateManyWithoutUserNestedInput = {
@@ -12725,11 +12661,11 @@ export namespace Prisma {
     connect?: BookmarkWhereUniqueInput | BookmarkWhereUniqueInput[]
   }
 
-  export type NotificationCreateNestedManyWithoutThreadInput = {
-    create?: XOR<NotificationCreateWithoutThreadInput, NotificationUncheckedCreateWithoutThreadInput> | NotificationCreateWithoutThreadInput[] | NotificationUncheckedCreateWithoutThreadInput[]
-    connectOrCreate?: NotificationCreateOrConnectWithoutThreadInput | NotificationCreateOrConnectWithoutThreadInput[]
-    createMany?: NotificationCreateManyThreadInputEnvelope
-    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  export type CommentCreateNestedManyWithoutThreadInput = {
+    create?: XOR<CommentCreateWithoutThreadInput, CommentUncheckedCreateWithoutThreadInput> | CommentCreateWithoutThreadInput[] | CommentUncheckedCreateWithoutThreadInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutThreadInput | CommentCreateOrConnectWithoutThreadInput[]
+    createMany?: CommentCreateManyThreadInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
   export type ThreadUncheckedCreateNestedManyWithoutRemixOfThreadInput = {
@@ -12760,11 +12696,11 @@ export namespace Prisma {
     connect?: BookmarkWhereUniqueInput | BookmarkWhereUniqueInput[]
   }
 
-  export type NotificationUncheckedCreateNestedManyWithoutThreadInput = {
-    create?: XOR<NotificationCreateWithoutThreadInput, NotificationUncheckedCreateWithoutThreadInput> | NotificationCreateWithoutThreadInput[] | NotificationUncheckedCreateWithoutThreadInput[]
-    connectOrCreate?: NotificationCreateOrConnectWithoutThreadInput | NotificationCreateOrConnectWithoutThreadInput[]
-    createMany?: NotificationCreateManyThreadInputEnvelope
-    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  export type CommentUncheckedCreateNestedManyWithoutThreadInput = {
+    create?: XOR<CommentCreateWithoutThreadInput, CommentUncheckedCreateWithoutThreadInput> | CommentCreateWithoutThreadInput[] | CommentUncheckedCreateWithoutThreadInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutThreadInput | CommentCreateOrConnectWithoutThreadInput[]
+    createMany?: CommentCreateManyThreadInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
   export type ThreadUpdatetagsInput = {
@@ -12850,18 +12786,18 @@ export namespace Prisma {
     deleteMany?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
   }
 
-  export type NotificationUpdateManyWithoutThreadNestedInput = {
-    create?: XOR<NotificationCreateWithoutThreadInput, NotificationUncheckedCreateWithoutThreadInput> | NotificationCreateWithoutThreadInput[] | NotificationUncheckedCreateWithoutThreadInput[]
-    connectOrCreate?: NotificationCreateOrConnectWithoutThreadInput | NotificationCreateOrConnectWithoutThreadInput[]
-    upsert?: NotificationUpsertWithWhereUniqueWithoutThreadInput | NotificationUpsertWithWhereUniqueWithoutThreadInput[]
-    createMany?: NotificationCreateManyThreadInputEnvelope
-    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    update?: NotificationUpdateWithWhereUniqueWithoutThreadInput | NotificationUpdateWithWhereUniqueWithoutThreadInput[]
-    updateMany?: NotificationUpdateManyWithWhereWithoutThreadInput | NotificationUpdateManyWithWhereWithoutThreadInput[]
-    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  export type CommentUpdateManyWithoutThreadNestedInput = {
+    create?: XOR<CommentCreateWithoutThreadInput, CommentUncheckedCreateWithoutThreadInput> | CommentCreateWithoutThreadInput[] | CommentUncheckedCreateWithoutThreadInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutThreadInput | CommentCreateOrConnectWithoutThreadInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutThreadInput | CommentUpsertWithWhereUniqueWithoutThreadInput[]
+    createMany?: CommentCreateManyThreadInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutThreadInput | CommentUpdateWithWhereUniqueWithoutThreadInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutThreadInput | CommentUpdateManyWithWhereWithoutThreadInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -12924,18 +12860,18 @@ export namespace Prisma {
     deleteMany?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
   }
 
-  export type NotificationUncheckedUpdateManyWithoutThreadNestedInput = {
-    create?: XOR<NotificationCreateWithoutThreadInput, NotificationUncheckedCreateWithoutThreadInput> | NotificationCreateWithoutThreadInput[] | NotificationUncheckedCreateWithoutThreadInput[]
-    connectOrCreate?: NotificationCreateOrConnectWithoutThreadInput | NotificationCreateOrConnectWithoutThreadInput[]
-    upsert?: NotificationUpsertWithWhereUniqueWithoutThreadInput | NotificationUpsertWithWhereUniqueWithoutThreadInput[]
-    createMany?: NotificationCreateManyThreadInputEnvelope
-    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
-    update?: NotificationUpdateWithWhereUniqueWithoutThreadInput | NotificationUpdateWithWhereUniqueWithoutThreadInput[]
-    updateMany?: NotificationUpdateManyWithWhereWithoutThreadInput | NotificationUpdateManyWithWhereWithoutThreadInput[]
-    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  export type CommentUncheckedUpdateManyWithoutThreadNestedInput = {
+    create?: XOR<CommentCreateWithoutThreadInput, CommentUncheckedCreateWithoutThreadInput> | CommentCreateWithoutThreadInput[] | CommentUncheckedCreateWithoutThreadInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutThreadInput | CommentCreateOrConnectWithoutThreadInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutThreadInput | CommentUpsertWithWhereUniqueWithoutThreadInput[]
+    createMany?: CommentCreateManyThreadInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutThreadInput | CommentUpdateWithWhereUniqueWithoutThreadInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutThreadInput | CommentUpdateManyWithWhereWithoutThreadInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
   export type ThreadCreateNestedOneWithoutSegmentsInput = {
@@ -13092,38 +13028,32 @@ export namespace Prisma {
     update?: XOR<XOR<CollectionUpdateToOneWithWhereWithoutBookmarksInput, CollectionUpdateWithoutBookmarksInput>, CollectionUncheckedUpdateWithoutBookmarksInput>
   }
 
-  export type UserCreateNestedOneWithoutNotificationsInput = {
-    create?: XOR<UserCreateWithoutNotificationsInput, UserUncheckedCreateWithoutNotificationsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutNotificationsInput
+  export type UserCreateNestedOneWithoutCommentsInput = {
+    create?: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCommentsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type ThreadCreateNestedOneWithoutNotificationsInput = {
-    create?: XOR<ThreadCreateWithoutNotificationsInput, ThreadUncheckedCreateWithoutNotificationsInput>
-    connectOrCreate?: ThreadCreateOrConnectWithoutNotificationsInput
+  export type ThreadCreateNestedOneWithoutCommentsInput = {
+    create?: XOR<ThreadCreateWithoutCommentsInput, ThreadUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: ThreadCreateOrConnectWithoutCommentsInput
     connect?: ThreadWhereUniqueInput
   }
 
-  export type EnumNotificationTypeFieldUpdateOperationsInput = {
-    set?: $Enums.NotificationType
-  }
-
-  export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
-    create?: XOR<UserCreateWithoutNotificationsInput, UserUncheckedCreateWithoutNotificationsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutNotificationsInput
-    upsert?: UserUpsertWithoutNotificationsInput
+  export type UserUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCommentsInput
+    upsert?: UserUpsertWithoutCommentsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotificationsInput, UserUpdateWithoutNotificationsInput>, UserUncheckedUpdateWithoutNotificationsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCommentsInput, UserUpdateWithoutCommentsInput>, UserUncheckedUpdateWithoutCommentsInput>
   }
 
-  export type ThreadUpdateOneWithoutNotificationsNestedInput = {
-    create?: XOR<ThreadCreateWithoutNotificationsInput, ThreadUncheckedCreateWithoutNotificationsInput>
-    connectOrCreate?: ThreadCreateOrConnectWithoutNotificationsInput
-    upsert?: ThreadUpsertWithoutNotificationsInput
-    disconnect?: ThreadWhereInput | boolean
-    delete?: ThreadWhereInput | boolean
+  export type ThreadUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<ThreadCreateWithoutCommentsInput, ThreadUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: ThreadCreateOrConnectWithoutCommentsInput
+    upsert?: ThreadUpsertWithoutCommentsInput
     connect?: ThreadWhereUniqueInput
-    update?: XOR<XOR<ThreadUpdateToOneWithWhereWithoutNotificationsInput, ThreadUpdateWithoutNotificationsInput>, ThreadUncheckedUpdateWithoutNotificationsInput>
+    update?: XOR<XOR<ThreadUpdateToOneWithWhereWithoutCommentsInput, ThreadUpdateWithoutCommentsInput>, ThreadUncheckedUpdateWithoutCommentsInput>
   }
 
   export type UserCreateNestedOneWithoutRefreshTokenInput = {
@@ -13306,23 +13236,6 @@ export namespace Prisma {
     _max?: NestedEnumReactionTypeFilter<$PrismaModel>
   }
 
-  export type NestedEnumNotificationTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumNotificationTypeFilter<$PrismaModel> | $Enums.NotificationType
-  }
-
-  export type NestedEnumNotificationTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumNotificationTypeWithAggregatesFilter<$PrismaModel> | $Enums.NotificationType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumNotificationTypeFilter<$PrismaModel>
-    _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
-  }
-
   export type ThreadCreateWithoutAuthorInput = {
     id?: string
     title: string
@@ -13335,7 +13248,7 @@ export namespace Prisma {
     segments?: ThreadSegmentCreateNestedManyWithoutThreadInput
     reactions?: ReactionCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkCreateNestedManyWithoutThreadInput
-    notifications?: NotificationCreateNestedManyWithoutThreadInput
+    comments?: CommentCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadUncheckedCreateWithoutAuthorInput = {
@@ -13350,7 +13263,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUncheckedCreateNestedManyWithoutThreadInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutThreadInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutThreadInput
+    comments?: CommentUncheckedCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadCreateOrConnectWithoutAuthorInput = {
@@ -13437,29 +13350,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type NotificationCreateWithoutUserInput = {
+  export type CommentCreateWithoutUserInput = {
     id?: string
-    type: $Enums.NotificationType
+    content: string
     created_at?: Date | string
-    is_read?: boolean
-    thread?: ThreadCreateNestedOneWithoutNotificationsInput
+    updated_at?: Date | string
+    thread: ThreadCreateNestedOneWithoutCommentsInput
   }
 
-  export type NotificationUncheckedCreateWithoutUserInput = {
+  export type CommentUncheckedCreateWithoutUserInput = {
     id?: string
-    type: $Enums.NotificationType
-    thread_id?: string | null
+    thread_id: string
+    content: string
     created_at?: Date | string
-    is_read?: boolean
+    updated_at?: Date | string
   }
 
-  export type NotificationCreateOrConnectWithoutUserInput = {
-    where: NotificationWhereUniqueInput
-    create: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput>
+  export type CommentCreateOrConnectWithoutUserInput = {
+    where: CommentWhereUniqueInput
+    create: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput>
   }
 
-  export type NotificationCreateManyUserInputEnvelope = {
-    data: NotificationCreateManyUserInput | NotificationCreateManyUserInput[]
+  export type CommentCreateManyUserInputEnvelope = {
+    data: CommentCreateManyUserInput | CommentCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -13598,32 +13511,32 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Bookmark"> | Date | string
   }
 
-  export type NotificationUpsertWithWhereUniqueWithoutUserInput = {
-    where: NotificationWhereUniqueInput
-    update: XOR<NotificationUpdateWithoutUserInput, NotificationUncheckedUpdateWithoutUserInput>
-    create: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput>
+  export type CommentUpsertWithWhereUniqueWithoutUserInput = {
+    where: CommentWhereUniqueInput
+    update: XOR<CommentUpdateWithoutUserInput, CommentUncheckedUpdateWithoutUserInput>
+    create: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput>
   }
 
-  export type NotificationUpdateWithWhereUniqueWithoutUserInput = {
-    where: NotificationWhereUniqueInput
-    data: XOR<NotificationUpdateWithoutUserInput, NotificationUncheckedUpdateWithoutUserInput>
+  export type CommentUpdateWithWhereUniqueWithoutUserInput = {
+    where: CommentWhereUniqueInput
+    data: XOR<CommentUpdateWithoutUserInput, CommentUncheckedUpdateWithoutUserInput>
   }
 
-  export type NotificationUpdateManyWithWhereWithoutUserInput = {
-    where: NotificationScalarWhereInput
-    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyWithoutUserInput>
+  export type CommentUpdateManyWithWhereWithoutUserInput = {
+    where: CommentScalarWhereInput
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type NotificationScalarWhereInput = {
-    AND?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
-    OR?: NotificationScalarWhereInput[]
-    NOT?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
-    id?: StringFilter<"Notification"> | string
-    user_id?: StringFilter<"Notification"> | string
-    type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
-    thread_id?: StringNullableFilter<"Notification"> | string | null
-    created_at?: DateTimeFilter<"Notification"> | Date | string
-    is_read?: BoolFilter<"Notification"> | boolean
+  export type CommentScalarWhereInput = {
+    AND?: CommentScalarWhereInput | CommentScalarWhereInput[]
+    OR?: CommentScalarWhereInput[]
+    NOT?: CommentScalarWhereInput | CommentScalarWhereInput[]
+    id?: StringFilter<"Comment"> | string
+    user_id?: StringFilter<"Comment"> | string
+    thread_id?: StringFilter<"Comment"> | string
+    content?: StringFilter<"Comment"> | string
+    created_at?: DateTimeFilter<"Comment"> | Date | string
+    updated_at?: DateTimeFilter<"Comment"> | Date | string
   }
 
   export type RefreshTokenUpsertWithWhereUniqueWithoutUserInput = {
@@ -13662,7 +13575,7 @@ export namespace Prisma {
     reactions?: ReactionCreateNestedManyWithoutUserInput
     collections?: CollectionCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkCreateNestedManyWithoutUserInput
-    notifications?: NotificationCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
     RefreshToken?: RefreshTokenCreateNestedManyWithoutUserInput
   }
 
@@ -13675,7 +13588,7 @@ export namespace Prisma {
     reactions?: ReactionUncheckedCreateNestedManyWithoutUserInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutUserInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     RefreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -13696,7 +13609,7 @@ export namespace Prisma {
     segments?: ThreadSegmentCreateNestedManyWithoutThreadInput
     reactions?: ReactionCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkCreateNestedManyWithoutThreadInput
-    notifications?: NotificationCreateNestedManyWithoutThreadInput
+    comments?: CommentCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadUncheckedCreateWithoutRemixesInput = {
@@ -13711,7 +13624,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUncheckedCreateNestedManyWithoutThreadInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutThreadInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutThreadInput
+    comments?: CommentUncheckedCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadCreateOrConnectWithoutRemixesInput = {
@@ -13731,7 +13644,7 @@ export namespace Prisma {
     segments?: ThreadSegmentCreateNestedManyWithoutThreadInput
     reactions?: ReactionCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkCreateNestedManyWithoutThreadInput
-    notifications?: NotificationCreateNestedManyWithoutThreadInput
+    comments?: CommentCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadUncheckedCreateWithoutRemixOfThreadInput = {
@@ -13746,7 +13659,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUncheckedCreateNestedManyWithoutThreadInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutThreadInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutThreadInput
+    comments?: CommentUncheckedCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadCreateOrConnectWithoutRemixOfThreadInput = {
@@ -13831,29 +13744,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type NotificationCreateWithoutThreadInput = {
+  export type CommentCreateWithoutThreadInput = {
     id?: string
-    type: $Enums.NotificationType
+    content: string
     created_at?: Date | string
-    is_read?: boolean
-    user: UserCreateNestedOneWithoutNotificationsInput
+    updated_at?: Date | string
+    user: UserCreateNestedOneWithoutCommentsInput
   }
 
-  export type NotificationUncheckedCreateWithoutThreadInput = {
+  export type CommentUncheckedCreateWithoutThreadInput = {
     id?: string
     user_id: string
-    type: $Enums.NotificationType
+    content: string
     created_at?: Date | string
-    is_read?: boolean
+    updated_at?: Date | string
   }
 
-  export type NotificationCreateOrConnectWithoutThreadInput = {
-    where: NotificationWhereUniqueInput
-    create: XOR<NotificationCreateWithoutThreadInput, NotificationUncheckedCreateWithoutThreadInput>
+  export type CommentCreateOrConnectWithoutThreadInput = {
+    where: CommentWhereUniqueInput
+    create: XOR<CommentCreateWithoutThreadInput, CommentUncheckedCreateWithoutThreadInput>
   }
 
-  export type NotificationCreateManyThreadInputEnvelope = {
-    data: NotificationCreateManyThreadInput | NotificationCreateManyThreadInput[]
+  export type CommentCreateManyThreadInputEnvelope = {
+    data: CommentCreateManyThreadInput | CommentCreateManyThreadInput[]
     skipDuplicates?: boolean
   }
 
@@ -13877,7 +13790,7 @@ export namespace Prisma {
     reactions?: ReactionUpdateManyWithoutUserNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
     RefreshToken?: RefreshTokenUpdateManyWithoutUserNestedInput
   }
 
@@ -13890,7 +13803,7 @@ export namespace Prisma {
     reactions?: ReactionUncheckedUpdateManyWithoutUserNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     RefreshToken?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -13917,7 +13830,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUpdateManyWithoutThreadNestedInput
     reactions?: ReactionUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUpdateManyWithoutThreadNestedInput
+    comments?: CommentUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadUncheckedUpdateWithoutRemixesInput = {
@@ -13932,7 +13845,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUncheckedUpdateManyWithoutThreadNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutThreadNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadUpsertWithWhereUniqueWithoutRemixOfThreadInput = {
@@ -14010,20 +13923,20 @@ export namespace Prisma {
     data: XOR<BookmarkUpdateManyMutationInput, BookmarkUncheckedUpdateManyWithoutThreadInput>
   }
 
-  export type NotificationUpsertWithWhereUniqueWithoutThreadInput = {
-    where: NotificationWhereUniqueInput
-    update: XOR<NotificationUpdateWithoutThreadInput, NotificationUncheckedUpdateWithoutThreadInput>
-    create: XOR<NotificationCreateWithoutThreadInput, NotificationUncheckedCreateWithoutThreadInput>
+  export type CommentUpsertWithWhereUniqueWithoutThreadInput = {
+    where: CommentWhereUniqueInput
+    update: XOR<CommentUpdateWithoutThreadInput, CommentUncheckedUpdateWithoutThreadInput>
+    create: XOR<CommentCreateWithoutThreadInput, CommentUncheckedCreateWithoutThreadInput>
   }
 
-  export type NotificationUpdateWithWhereUniqueWithoutThreadInput = {
-    where: NotificationWhereUniqueInput
-    data: XOR<NotificationUpdateWithoutThreadInput, NotificationUncheckedUpdateWithoutThreadInput>
+  export type CommentUpdateWithWhereUniqueWithoutThreadInput = {
+    where: CommentWhereUniqueInput
+    data: XOR<CommentUpdateWithoutThreadInput, CommentUncheckedUpdateWithoutThreadInput>
   }
 
-  export type NotificationUpdateManyWithWhereWithoutThreadInput = {
-    where: NotificationScalarWhereInput
-    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyWithoutThreadInput>
+  export type CommentUpdateManyWithWhereWithoutThreadInput = {
+    where: CommentScalarWhereInput
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutThreadInput>
   }
 
   export type ThreadCreateWithoutSegmentsInput = {
@@ -14038,7 +13951,7 @@ export namespace Prisma {
     remixes?: ThreadCreateNestedManyWithoutRemixOfThreadInput
     reactions?: ReactionCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkCreateNestedManyWithoutThreadInput
-    notifications?: NotificationCreateNestedManyWithoutThreadInput
+    comments?: CommentCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadUncheckedCreateWithoutSegmentsInput = {
@@ -14053,7 +13966,7 @@ export namespace Prisma {
     remixes?: ThreadUncheckedCreateNestedManyWithoutRemixOfThreadInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutThreadInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutThreadInput
+    comments?: CommentUncheckedCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadCreateOrConnectWithoutSegmentsInput = {
@@ -14084,7 +13997,7 @@ export namespace Prisma {
     remixes?: ThreadUpdateManyWithoutRemixOfThreadNestedInput
     reactions?: ReactionUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUpdateManyWithoutThreadNestedInput
+    comments?: CommentUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadUncheckedUpdateWithoutSegmentsInput = {
@@ -14099,7 +14012,7 @@ export namespace Prisma {
     remixes?: ThreadUncheckedUpdateManyWithoutRemixOfThreadNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutThreadNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutThreadNestedInput
   }
 
   export type UserCreateWithoutReactionsInput = {
@@ -14111,7 +14024,7 @@ export namespace Prisma {
     threads?: ThreadCreateNestedManyWithoutAuthorInput
     collections?: CollectionCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkCreateNestedManyWithoutUserInput
-    notifications?: NotificationCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
     RefreshToken?: RefreshTokenCreateNestedManyWithoutUserInput
   }
 
@@ -14124,7 +14037,7 @@ export namespace Prisma {
     threads?: ThreadUncheckedCreateNestedManyWithoutAuthorInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutUserInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     RefreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -14145,7 +14058,7 @@ export namespace Prisma {
     remixes?: ThreadCreateNestedManyWithoutRemixOfThreadInput
     segments?: ThreadSegmentCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkCreateNestedManyWithoutThreadInput
-    notifications?: NotificationCreateNestedManyWithoutThreadInput
+    comments?: CommentCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadUncheckedCreateWithoutReactionsInput = {
@@ -14160,7 +14073,7 @@ export namespace Prisma {
     remixes?: ThreadUncheckedCreateNestedManyWithoutRemixOfThreadInput
     segments?: ThreadSegmentUncheckedCreateNestedManyWithoutThreadInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutThreadInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutThreadInput
+    comments?: CommentUncheckedCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadCreateOrConnectWithoutReactionsInput = {
@@ -14188,7 +14101,7 @@ export namespace Prisma {
     threads?: ThreadUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
     RefreshToken?: RefreshTokenUpdateManyWithoutUserNestedInput
   }
 
@@ -14201,7 +14114,7 @@ export namespace Prisma {
     threads?: ThreadUncheckedUpdateManyWithoutAuthorNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     RefreshToken?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -14228,7 +14141,7 @@ export namespace Prisma {
     remixes?: ThreadUpdateManyWithoutRemixOfThreadNestedInput
     segments?: ThreadSegmentUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUpdateManyWithoutThreadNestedInput
+    comments?: CommentUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadUncheckedUpdateWithoutReactionsInput = {
@@ -14243,7 +14156,7 @@ export namespace Prisma {
     remixes?: ThreadUncheckedUpdateManyWithoutRemixOfThreadNestedInput
     segments?: ThreadSegmentUncheckedUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutThreadNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutThreadNestedInput
   }
 
   export type UserCreateWithoutCollectionsInput = {
@@ -14255,7 +14168,7 @@ export namespace Prisma {
     threads?: ThreadCreateNestedManyWithoutAuthorInput
     reactions?: ReactionCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkCreateNestedManyWithoutUserInput
-    notifications?: NotificationCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
     RefreshToken?: RefreshTokenCreateNestedManyWithoutUserInput
   }
 
@@ -14268,7 +14181,7 @@ export namespace Prisma {
     threads?: ThreadUncheckedCreateNestedManyWithoutAuthorInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutUserInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     RefreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -14321,7 +14234,7 @@ export namespace Prisma {
     threads?: ThreadUpdateManyWithoutAuthorNestedInput
     reactions?: ReactionUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
     RefreshToken?: RefreshTokenUpdateManyWithoutUserNestedInput
   }
 
@@ -14334,7 +14247,7 @@ export namespace Prisma {
     threads?: ThreadUncheckedUpdateManyWithoutAuthorNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     RefreshToken?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -14363,7 +14276,7 @@ export namespace Prisma {
     threads?: ThreadCreateNestedManyWithoutAuthorInput
     reactions?: ReactionCreateNestedManyWithoutUserInput
     collections?: CollectionCreateNestedManyWithoutUserInput
-    notifications?: NotificationCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
     RefreshToken?: RefreshTokenCreateNestedManyWithoutUserInput
   }
 
@@ -14376,7 +14289,7 @@ export namespace Prisma {
     threads?: ThreadUncheckedCreateNestedManyWithoutAuthorInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutUserInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     RefreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -14397,7 +14310,7 @@ export namespace Prisma {
     remixes?: ThreadCreateNestedManyWithoutRemixOfThreadInput
     segments?: ThreadSegmentCreateNestedManyWithoutThreadInput
     reactions?: ReactionCreateNestedManyWithoutThreadInput
-    notifications?: NotificationCreateNestedManyWithoutThreadInput
+    comments?: CommentCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadUncheckedCreateWithoutBookmarksInput = {
@@ -14412,7 +14325,7 @@ export namespace Prisma {
     remixes?: ThreadUncheckedCreateNestedManyWithoutRemixOfThreadInput
     segments?: ThreadSegmentUncheckedCreateNestedManyWithoutThreadInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutThreadInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutThreadInput
+    comments?: CommentUncheckedCreateNestedManyWithoutThreadInput
   }
 
   export type ThreadCreateOrConnectWithoutBookmarksInput = {
@@ -14461,7 +14374,7 @@ export namespace Prisma {
     threads?: ThreadUpdateManyWithoutAuthorNestedInput
     reactions?: ReactionUpdateManyWithoutUserNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
     RefreshToken?: RefreshTokenUpdateManyWithoutUserNestedInput
   }
 
@@ -14474,7 +14387,7 @@ export namespace Prisma {
     threads?: ThreadUncheckedUpdateManyWithoutAuthorNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutUserNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     RefreshToken?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -14501,7 +14414,7 @@ export namespace Prisma {
     remixes?: ThreadUpdateManyWithoutRemixOfThreadNestedInput
     segments?: ThreadSegmentUpdateManyWithoutThreadNestedInput
     reactions?: ReactionUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUpdateManyWithoutThreadNestedInput
+    comments?: CommentUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadUncheckedUpdateWithoutBookmarksInput = {
@@ -14516,7 +14429,7 @@ export namespace Prisma {
     remixes?: ThreadUncheckedUpdateManyWithoutRemixOfThreadNestedInput
     segments?: ThreadSegmentUncheckedUpdateManyWithoutThreadNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutThreadNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutThreadNestedInput
   }
 
   export type CollectionUpsertWithoutBookmarksInput = {
@@ -14546,7 +14459,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCreateWithoutNotificationsInput = {
+  export type UserCreateWithoutCommentsInput = {
     id?: string
     email: string
     password_hash: string
@@ -14559,7 +14472,7 @@ export namespace Prisma {
     RefreshToken?: RefreshTokenCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutNotificationsInput = {
+  export type UserUncheckedCreateWithoutCommentsInput = {
     id?: string
     email: string
     password_hash: string
@@ -14572,12 +14485,12 @@ export namespace Prisma {
     RefreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutNotificationsInput = {
+  export type UserCreateOrConnectWithoutCommentsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutNotificationsInput, UserUncheckedCreateWithoutNotificationsInput>
+    create: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
   }
 
-  export type ThreadCreateWithoutNotificationsInput = {
+  export type ThreadCreateWithoutCommentsInput = {
     id?: string
     title: string
     tags?: ThreadCreatetagsInput | string[]
@@ -14592,7 +14505,7 @@ export namespace Prisma {
     bookmarks?: BookmarkCreateNestedManyWithoutThreadInput
   }
 
-  export type ThreadUncheckedCreateWithoutNotificationsInput = {
+  export type ThreadUncheckedCreateWithoutCommentsInput = {
     id?: string
     title: string
     tags?: ThreadCreatetagsInput | string[]
@@ -14607,23 +14520,23 @@ export namespace Prisma {
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutThreadInput
   }
 
-  export type ThreadCreateOrConnectWithoutNotificationsInput = {
+  export type ThreadCreateOrConnectWithoutCommentsInput = {
     where: ThreadWhereUniqueInput
-    create: XOR<ThreadCreateWithoutNotificationsInput, ThreadUncheckedCreateWithoutNotificationsInput>
+    create: XOR<ThreadCreateWithoutCommentsInput, ThreadUncheckedCreateWithoutCommentsInput>
   }
 
-  export type UserUpsertWithoutNotificationsInput = {
-    update: XOR<UserUpdateWithoutNotificationsInput, UserUncheckedUpdateWithoutNotificationsInput>
-    create: XOR<UserCreateWithoutNotificationsInput, UserUncheckedCreateWithoutNotificationsInput>
+  export type UserUpsertWithoutCommentsInput = {
+    update: XOR<UserUpdateWithoutCommentsInput, UserUncheckedUpdateWithoutCommentsInput>
+    create: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutNotificationsInput = {
+  export type UserUpdateToOneWithWhereWithoutCommentsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutNotificationsInput, UserUncheckedUpdateWithoutNotificationsInput>
+    data: XOR<UserUpdateWithoutCommentsInput, UserUncheckedUpdateWithoutCommentsInput>
   }
 
-  export type UserUpdateWithoutNotificationsInput = {
+  export type UserUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
@@ -14636,7 +14549,7 @@ export namespace Prisma {
     RefreshToken?: RefreshTokenUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutNotificationsInput = {
+  export type UserUncheckedUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
@@ -14649,18 +14562,18 @@ export namespace Prisma {
     RefreshToken?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type ThreadUpsertWithoutNotificationsInput = {
-    update: XOR<ThreadUpdateWithoutNotificationsInput, ThreadUncheckedUpdateWithoutNotificationsInput>
-    create: XOR<ThreadCreateWithoutNotificationsInput, ThreadUncheckedCreateWithoutNotificationsInput>
+  export type ThreadUpsertWithoutCommentsInput = {
+    update: XOR<ThreadUpdateWithoutCommentsInput, ThreadUncheckedUpdateWithoutCommentsInput>
+    create: XOR<ThreadCreateWithoutCommentsInput, ThreadUncheckedCreateWithoutCommentsInput>
     where?: ThreadWhereInput
   }
 
-  export type ThreadUpdateToOneWithWhereWithoutNotificationsInput = {
+  export type ThreadUpdateToOneWithWhereWithoutCommentsInput = {
     where?: ThreadWhereInput
-    data: XOR<ThreadUpdateWithoutNotificationsInput, ThreadUncheckedUpdateWithoutNotificationsInput>
+    data: XOR<ThreadUpdateWithoutCommentsInput, ThreadUncheckedUpdateWithoutCommentsInput>
   }
 
-  export type ThreadUpdateWithoutNotificationsInput = {
+  export type ThreadUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     tags?: ThreadUpdatetagsInput | string[]
@@ -14675,7 +14588,7 @@ export namespace Prisma {
     bookmarks?: BookmarkUpdateManyWithoutThreadNestedInput
   }
 
-  export type ThreadUncheckedUpdateWithoutNotificationsInput = {
+  export type ThreadUncheckedUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     tags?: ThreadUpdatetagsInput | string[]
@@ -14700,7 +14613,7 @@ export namespace Prisma {
     reactions?: ReactionCreateNestedManyWithoutUserInput
     collections?: CollectionCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkCreateNestedManyWithoutUserInput
-    notifications?: NotificationCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRefreshTokenInput = {
@@ -14713,7 +14626,7 @@ export namespace Prisma {
     reactions?: ReactionUncheckedCreateNestedManyWithoutUserInput
     collections?: CollectionUncheckedCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutUserInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRefreshTokenInput = {
@@ -14742,7 +14655,7 @@ export namespace Prisma {
     reactions?: ReactionUpdateManyWithoutUserNestedInput
     collections?: CollectionUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRefreshTokenInput = {
@@ -14755,7 +14668,7 @@ export namespace Prisma {
     reactions?: ReactionUncheckedUpdateManyWithoutUserNestedInput
     collections?: CollectionUncheckedUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ThreadCreateManyAuthorInput = {
@@ -14789,12 +14702,12 @@ export namespace Prisma {
     created_at?: Date | string
   }
 
-  export type NotificationCreateManyUserInput = {
+  export type CommentCreateManyUserInput = {
     id?: string
-    type: $Enums.NotificationType
-    thread_id?: string | null
+    thread_id: string
+    content: string
     created_at?: Date | string
-    is_read?: boolean
+    updated_at?: Date | string
   }
 
   export type RefreshTokenCreateManyUserInput = {
@@ -14816,7 +14729,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUpdateManyWithoutThreadNestedInput
     reactions?: ReactionUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUpdateManyWithoutThreadNestedInput
+    comments?: CommentUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadUncheckedUpdateWithoutAuthorInput = {
@@ -14831,7 +14744,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUncheckedUpdateManyWithoutThreadNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutThreadNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadUncheckedUpdateManyWithoutAuthorInput = {
@@ -14909,28 +14822,28 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NotificationUpdateWithoutUserInput = {
+  export type CommentUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_read?: BoolFieldUpdateOperationsInput | boolean
-    thread?: ThreadUpdateOneWithoutNotificationsNestedInput
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    thread?: ThreadUpdateOneRequiredWithoutCommentsNestedInput
   }
 
-  export type NotificationUncheckedUpdateWithoutUserInput = {
+  export type CommentUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    thread_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thread_id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_read?: BoolFieldUpdateOperationsInput | boolean
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NotificationUncheckedUpdateManyWithoutUserInput = {
+  export type CommentUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    thread_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thread_id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_read?: BoolFieldUpdateOperationsInput | boolean
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RefreshTokenUpdateWithoutUserInput = {
@@ -14985,12 +14898,12 @@ export namespace Prisma {
     created_at?: Date | string
   }
 
-  export type NotificationCreateManyThreadInput = {
+  export type CommentCreateManyThreadInput = {
     id?: string
     user_id: string
-    type: $Enums.NotificationType
+    content: string
     created_at?: Date | string
-    is_read?: boolean
+    updated_at?: Date | string
   }
 
   export type ThreadUpdateWithoutRemixOfThreadInput = {
@@ -15005,7 +14918,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUpdateManyWithoutThreadNestedInput
     reactions?: ReactionUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUpdateManyWithoutThreadNestedInput
+    comments?: CommentUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadUncheckedUpdateWithoutRemixOfThreadInput = {
@@ -15020,7 +14933,7 @@ export namespace Prisma {
     segments?: ThreadSegmentUncheckedUpdateManyWithoutThreadNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutThreadNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutThreadNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutThreadNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutThreadNestedInput
   }
 
   export type ThreadUncheckedUpdateManyWithoutRemixOfThreadInput = {
@@ -15096,28 +15009,28 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NotificationUpdateWithoutThreadInput = {
+  export type CommentUpdateWithoutThreadInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_read?: BoolFieldUpdateOperationsInput | boolean
-    user?: UserUpdateOneRequiredWithoutNotificationsNestedInput
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCommentsNestedInput
   }
 
-  export type NotificationUncheckedUpdateWithoutThreadInput = {
+  export type CommentUncheckedUpdateWithoutThreadInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_read?: BoolFieldUpdateOperationsInput | boolean
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NotificationUncheckedUpdateManyWithoutThreadInput = {
+  export type CommentUncheckedUpdateManyWithoutThreadInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    is_read?: BoolFieldUpdateOperationsInput | boolean
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BookmarkCreateManyCollectionInput = {
