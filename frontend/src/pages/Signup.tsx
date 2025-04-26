@@ -18,19 +18,13 @@ import {
 import { Input } from '@/components/ui/input'
 import { useAuth } from '../context/AuthContext'
 
-const signupSchema = z
-  .object({
-    name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
-    email: z.string().email({ message: 'Please enter a valid email address' }),
-    password: z
-      .string()
-      .min(6, { message: 'Password must be at least 6 characters' }),
-    confirmPassword: z.string(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  })
+const signupSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
+  email: z.string().email({ message: 'Please enter a valid email address' }),
+  password: z
+    .string()
+    .min(6, { message: 'Password must be at least 6 characters' }),
+})
 
 type SignupFormValues = z.infer<typeof signupSchema>
 
@@ -45,15 +39,15 @@ export default function SignupPage() {
       name: '',
       email: '',
       password: '',
-      confirmPassword: '',
     },
   })
 
   const onSubmit = async (data: SignupFormValues) => {
     setIsLoading(true)
     try {
-      await signup(data.name, data.email, data.password)
-      navigate('/')
+      const res = await signup(data.name, data.email, data.password)
+      console.log(res)
+      // navigate('/')
 
       toast.success('Welcome to ThreadSpire! Account created successfully.')
     } catch (error) {
@@ -126,23 +120,7 @@ export default function SignupPage() {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field }: { field: any }) => (
-              <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="••••••••"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+
           <Button
             type="submit"
             className="w-full"

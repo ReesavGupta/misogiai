@@ -38,14 +38,14 @@ export default function CreateThreadPage() {
 
       <ThreadEditor
         onSave={handleSave}
-        isLoading={createThreadMutation.isLoading}
+        isLoading={createThreadMutation.isPending}
       />
 
       <div className="mt-8 border-t pt-4">
         <Button
           variant="outline"
           onClick={() => navigate(-1)}
-          disabled={createThreadMutation.isLoading}
+          disabled={createThreadMutation.isPending}
         >
           Cancel
         </Button>

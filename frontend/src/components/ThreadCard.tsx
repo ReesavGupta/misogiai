@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { formatDistanceToNow } from 'date-fns'
-import { BookmarkIcon, MessageSquare } from 'lucide-react'
+import { BookMarkedIcon, BookmarkIcon, MessageSquare } from 'lucide-react'
 import {
   Card,
   CardContent,
@@ -48,9 +48,19 @@ export default function ThreadCard({ thread }: ThreadCardProps) {
               size="icon"
               onClick={() => toggleBookmark()}
               disabled={isLoading}
-              className={isBookmarked ? 'text-primary' : ''}
+              // className={isBookmarked ? 'text-primary font-bold' : ''}
             >
-              <BookmarkIcon size={18} />
+              {!isBookmarked ? (
+                <BookmarkIcon
+                  size={18}
+                  className="text-primary"
+                />
+              ) : (
+                <BookMarkedIcon
+                  size={18}
+                  className="text-primary"
+                />
+              )}
               <span className="sr-only">Bookmark</span>
             </Button>
           )}
@@ -115,7 +125,7 @@ export default function ThreadCard({ thread }: ThreadCardProps) {
             size={16}
             className="mr-1"
           />
-          <span className="text-sm">{thread.comments.length}</span>
+          {/* <span className="text-sm">{thread.comments.length}</span> */}
         </div>
       </CardFooter>
     </Card>

@@ -2,18 +2,18 @@ import { api } from '../lib/api'
 
 export const bookmarkService = {
   async addBookmark(threadId: string, collectionId?: string): Promise<void> {
-    await api.post(`/threads/${threadId}/bookmarks`, {
+    await api.post(`/bookmarks/threads/${threadId}`, {
       collection_id: collectionId,
     })
   },
 
   async removeBookmark(threadId: string): Promise<void> {
-    await api.delete(`/threads/${threadId}/bookmarks`)
+    await api.delete(`/bookmarks/threads/${threadId}`)
   },
 
   async checkBookmark(threadId: string): Promise<{ isBookmarked: boolean }> {
     try {
-      await api.get(`/threads/${threadId}/bookmarks`)
+      await api.get(`/bookmarks/check/${threadId}`)
       return { isBookmarked: true }
     } catch (error) {
       return { isBookmarked: false }

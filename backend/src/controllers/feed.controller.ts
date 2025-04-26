@@ -10,7 +10,17 @@ export const getLatestThreads = asyncHandler(
       where: { is_published: true },
       orderBy: { created_at: 'desc' },
       include: {
-        author: { select: { id: true, name: true, email: true } },
+        author: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            comments: true,
+            reactions: true,
+            created_at: true,
+          },
+        },
+        segments: { select: { content: true, id: true, order_index: true } },
       },
       take: 20,
     })
@@ -31,7 +41,17 @@ export const getThreadsByTag = asyncHandler(
       },
       orderBy: { created_at: 'desc' },
       include: {
-        author: { select: { id: true, name: true, email: true } },
+        author: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            comments: true,
+            reactions: true,
+            created_at: true,
+          },
+        },
+        segments: { select: { content: true, id: true, order_index: true } },
       },
     })
 

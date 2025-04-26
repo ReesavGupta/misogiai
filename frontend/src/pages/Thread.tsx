@@ -300,9 +300,9 @@ export default function ThreadPage() {
           />
           <Button
             onClick={handleAddComment}
-            disabled={!commentText.trim() || addCommentMutation.isLoading}
+            disabled={!commentText.trim() || addCommentMutation.isPending}
           >
-            {addCommentMutation.isLoading ? 'Posting...' : 'Post Comment'}
+            {addCommentMutation.isPending ? 'Posting...' : 'Post Comment'}
           </Button>
         </div>
       ) : (
@@ -350,7 +350,7 @@ export default function ThreadPage() {
                     variant="ghost"
                     size="sm"
                     onClick={() => deleteCommentMutation.mutate(comment.id)}
-                    disabled={deleteCommentMutation.isLoading}
+                    disabled={deleteCommentMutation.isPending}
                   >
                     <Trash2
                       size={14}

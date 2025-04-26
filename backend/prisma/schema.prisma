@@ -26,7 +26,6 @@ model User {
   reactions    Reaction[]
   collections  Collection[]
   bookmarks    Bookmark[]
-  comments     Comment[]
   RefreshToken RefreshToken[]
 }
 
@@ -47,15 +46,13 @@ model Thread {
   segments  ThreadSegment[]
   reactions Reaction[]
   bookmarks Bookmark[]
-  comments  Comment[]
 }
 
 model ThreadSegment {
-  id          String  @id @default(uuid())
+  id          String @id @default(uuid())
   thread_id   String
   order_index Int
   content     String
-  image_url   String?
 
   thread Thread @relation(fields: [thread_id], references: [id], onDelete: Cascade)
 }
@@ -96,18 +93,6 @@ model Bookmark {
   collection Collection? @relation(fields: [collection_id], references: [id])
 
   @@unique([user_id, thread_id])
-}
-
-model Comment {
-  id         String   @id @default(uuid())
-  user_id    String
-  thread_id  String
-  content    String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  user   User   @relation(fields: [user_id], references: [id])
-  thread Thread @relation(fields: [thread_id], references: [id])
 }
 
 model RefreshToken {

@@ -24,26 +24,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    const initAuth = async () => {
-      try {
-        const userData = await authService.getCurrentUser()
-        setUser(userData)
-      } catch (error) {
-        console.error('Failed to get current user:', error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
+  // useEffect(() => {
+  //   const initAuth = async () => {
+  //     try {
+  //       const userData = await authService.getCurrentUser()
+  //       setUser(userData.user)
+  //     } catch (error) {
+  //       console.error('Failed to get current user:', error)
+  //     } finally {
+  //       setIsLoading(false)
+  //     }
+  //   }
 
-    initAuth()
-  }, [])
+  //   initAuth()
+  // }, [])
 
   const login = async (email: string, password: string) => {
     setIsLoading(true)
     try {
       const userData = await authService.login(email, password)
       setUser(userData)
+      console.log(userData)
     } finally {
       setIsLoading(false)
     }

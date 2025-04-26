@@ -174,3 +174,55 @@ export const deleteThreadHandler = asyncHandler(
       .json(ApiResponse.success({ message: 'Thread deleted successfully' }))
   }
 )
+
+export const remixThreadHandler = asyncHandler(
+  async (req: Request, res: Response) => {
+    const { originalThreadId, title, tags, segments } = req.body
+    const userId = req.user?.id
+
+    if (
+      !originalThreadId ||
+      !title ||
+      !segments ||
+      !Array.isArray(segments) ||
+      segments.length === 0
+    ) {
+      throw new ApiError(
+        400,
+        'Original thread ID, title, and at least one segment are required'
+      )
+    }
+
+    // Find the original thread to remix
+    const originalThread = await prisma.thread.findUnique({
+      where: { id: originalThreadId },
+      include: { segments: true },
+    })
+
+    if (!originalThread) {
+      throw new ApiError(404, 'Original thread not found')
+    }
+
+    // Create the new remix thread
+    const newThread = await prisma.thread.create({
+      data: {
+        title,
+        tags,
+        author_id: userId!, // Using the authenticated user's ID
+        is_published: false, // You can change this if the user wants to publish immediately
+        remix_of_thread_id: originalThreadId, // Link to the original thread
+        segments: {
+          create: segments.map((content: string, index: number) => ({
+            content,
+            order_index: index,
+          })),
+        },
+      },
+      include: { segments: true },
+    })
+
+    // Optionally, you can add reactions, bookmarks, etc., based on the remix logic if needed
+
+    res.status(201).json(ApiResponse.success({ thread: newThread }))
+  }
+)

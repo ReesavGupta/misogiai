@@ -1,24 +1,18 @@
 import { Router } from 'express'
 import {
-  addThreadToCollection,
-  removeThreadFromCollection,
+  addBookmark,
+  removeBookmark,
+  checkBookmark,
+  getMyBookmarks,
 } from '../controllers/bookmark.controller'
-import authMiddleware from '../middlewares/auth.middleware'
+import protect from '../middlewares/auth.middleware' // adjust path if needed
 
 const router = Router()
 
-// Add a thread to bookmarks (optionally into a collection)
-router.post(
-  '/threads/:threadId/bookmarks',
-  authMiddleware,
-  addThreadToCollection
-)
-
-// Remove a thread from bookmarks
-router.delete(
-  '/threads/:threadId/bookmarks',
-  authMiddleware,
-  removeThreadFromCollection
-)
+// Protected Routes
+router.post('/threads/:threadId', protect, addBookmark)
+router.delete('/threads/:threadId', protect, removeBookmark)
+router.get('/check/:threadId', protect, checkBookmark)
+router.get('/bookmarks', protect, getMyBookmarks)
 
 export default router

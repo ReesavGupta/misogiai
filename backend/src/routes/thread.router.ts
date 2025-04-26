@@ -6,6 +6,7 @@ import {
   updateThreadHandler,
   publishThreadHandler,
   deleteThreadHandler,
+  remixThreadHandler,
 } from '../controllers/thread.controller'
 import protect from '../middlewares/auth.middleware'
 
@@ -18,5 +19,6 @@ router.post('/', protect, createThreadHandler)
 router.patch('/:id', protect, updateThreadHandler)
 router.patch('/:id/publish', protect, publishThreadHandler)
 router.delete('/:id', protect, deleteThreadHandler)
+router.post('/remix', protect, remixThreadHandler)
 
 export default router

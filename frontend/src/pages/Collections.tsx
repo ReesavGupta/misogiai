@@ -187,8 +187,8 @@ export default function CollectionsPage() {
                 <Button
                   type="submit"
                   disabled={
-                    createCollectionMutation.isLoading ||
-                    updateCollectionMutation.isLoading
+                    createCollectionMutation.isPending ||
+                    updateCollectionMutation.isPending
                   }
                 >
                   {editingCollection ? 'Save Changes' : 'Create Collection'}

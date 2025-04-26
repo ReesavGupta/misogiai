@@ -9,6 +9,7 @@ const authenticateToken = async (
   res: Response,
   next: NextFunction
 ) => {
+  console.log('Request header:', req.header('Authorization'))
   const token = req.header('Authorization')?.split(' ')[1]
   console.log(`Token from header: ${token}`)
   if (!token) {
@@ -28,6 +29,7 @@ const authenticateToken = async (
 
     // Attach user to the request object
     req.user = user
+    console.log(`inside protect middleware`)
     next()
   } catch (error) {
     return next(new ApiError(401, 'Invalid or expired token'))

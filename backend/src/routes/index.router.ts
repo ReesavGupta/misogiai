@@ -6,6 +6,7 @@ import feedRoutes from './feed.router'
 import myThreadsRoutes from './myThread.router'
 import reactionRoutes from './reaction.router'
 import collectionRoutes from './collection.routes'
+import bookMarkRoutes from './bookmark.routes'
 
 const router = Router()
 
@@ -18,5 +19,6 @@ router.use('/feed', feedRoutes)
 router.use('/my-threads', myThreadsRoutes)
 router.use('/reactions', reactionRoutes)
 router.use('/collections', collectionRoutes)
+router.use('/bookmarks', bookMarkRoutes)
 
 export default router

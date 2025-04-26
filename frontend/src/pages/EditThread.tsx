@@ -72,14 +72,14 @@ export default function EditThreadPage() {
       <ThreadEditor
         initialThread={thread}
         onSave={handleSave}
-        isLoading={updateThreadMutation.isLoading}
+        isLoading={updateThreadMutation.isPending}
       />
 
       <div className="mt-8 border-t pt-4">
         <Button
           variant="outline"
           onClick={() => navigate(`/thread/${id}`)}
-          disabled={updateThreadMutation.isLoading}
+          disabled={updateThreadMutation.isPending}
         >
           Cancel
         </Button>

@@ -1,15 +1,17 @@
 import express from 'express'
 import cors from 'cors'
 import cookie from 'cookie-parser'
+
 const app = express()
 
-const corsOptions = {
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}
-
-app.use(cors(corsOptions))
+app.use(
+  cors({
+    credentials: true,
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookie())

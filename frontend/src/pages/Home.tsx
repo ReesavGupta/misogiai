@@ -3,24 +3,25 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Input } from '@/components/ui/input'
+// import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Search, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import ThreadCard from '../components/ThreadCard'
 import { threadService } from '../services/ThreadService'
 
 export default function HomePage() {
-  const [activeTab, setActiveTab] = useState('featured')
-  const [searchQuery, setSearchQuery] = useState('')
+  const [activeTab, setActiveTab] = useState<
+    'featured' | 'most_bookmarked' | 'most_remixed' | 'newest'
+  >('featured')
+  // const [searchQuery, setSearchQuery] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
 
   const { data: threads, isLoading } = useQuery({
-    queryKey: ['threads', activeTab, searchQuery, selectedTags],
+    queryKey: ['threads', activeTab, selectedTags],
     queryFn: () =>
       threadService.getThreads({
-        sort: activeTab.toString(),
-        search: searchQuery,
+        sort: activeTab,
         tags: selectedTags,
       }),
   })
@@ -39,7 +40,6 @@ export default function HomePage() {
   }
 
   const clearFilters = () => {
-    setSearchQuery('')
     setSelectedTags([])
   }
 
@@ -54,16 +54,7 @@ export default function HomePage() {
 
       <section className="mb-6">
         <div className="flex flex-col md:flex-row gap-4 mb-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search threads..."
-              className="pl-8"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          {(searchQuery || selectedTags.length > 0) && (
+          {selectedTags.length > 0 && (
             <Button
               variant="ghost"
               onClick={clearFilters}
@@ -77,7 +68,7 @@ export default function HomePage() {
           )}
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-4">
+        {/* <div className="flex flex-wrap gap-2 mb-4">
           {popularTags?.map((tag) => (
             <Badge
               key={tag}
@@ -88,13 +79,17 @@ export default function HomePage() {
               {tag}
             </Badge>
           ))}
-        </div>
+        </div> */}
       </section>
 
       <Tabs
         defaultValue="featured"
         value={activeTab}
-        onValueChange={setActiveTab}
+        onValueChange={(value) =>
+          setActiveTab(
+            value as 'featured' | 'most_bookmarked' | 'most_remixed' | 'newest'
+          )
+        }
       >
         <TabsList className="mb-6">
           <TabsTrigger value="featured">Featured</TabsTrigger>
@@ -124,6 +119,9 @@ export default function HomePage() {
                 key={thread.id}
                 thread={thread}
               />
+              // <ul>
+              //   <li>{thread.}</li>
+              // </ul>
             ))
           )}
         </TabsContent>

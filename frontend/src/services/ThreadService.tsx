@@ -3,23 +3,18 @@ import type { Thread, ThreadFilters } from '../types'
 
 export const threadService = {
   async getThreads(filters: ThreadFilters): Promise<Thread[]> {
-    const { sort = 'newest', search = '', tags = [] } = filters
+    const { sort = 'newest', tags = [] } = filters
 
-    const params = new URLSearchParams()
-    params.append('sort', sort)
+    let url = '/feed'
 
-    if (search) {
-      params.append('search', search)
+    if (tags.length === 1) {
+      url = `/feed/tag/${encodeURIComponent(tags[0])}`
     }
-
-    if (tags.length > 0) {
-      tags.forEach((tag) => params.append('tags', tag))
-    }
-
-    const response = await api.get(`/feed?${params.toString()}`)
-    return response.data
+    console.log(url)
+    const response = await api.get(url)
+    console.log(`my url :`, response.data.data.threads)
+    return response.data.data.threads
   },
-
   async getThreadById(id: string): Promise<Thread> {
     const response = await api.get(`/threads/${id}`)
     return response.data
@@ -60,13 +55,8 @@ export const threadService = {
     return response.data.id
   },
 
-  async getMyThreads(type: 'published' | 'drafts'): Promise<Thread[]> {
-    const response = await api.get(`/my-threads?type=${type}`)
-    return response.data
-  },
-
   async getPopularTags(): Promise<string[]> {
-    const response = await api.get('/tags/popular')
-    return response.data
+    const response = await api.get('/feed')
+    return response.data.data.threads
   },
 }
