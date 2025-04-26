@@ -1,3 +1,5 @@
+import type { Response } from 'express'
+
 export class ApiError extends Error {
   statusCode: number
   message: string
@@ -20,5 +22,10 @@ export class ApiError extends Error {
     } else {
       Error.captureStackTrace(this, this.constructor)
     }
+  }
+  static handle(err: any, res: Response) {
+    const status = err instanceof ApiError ? err.statusCode : 500
+    const message = err.message || 'Internal Server Error'
+    res.status(status).json({ message })
   }
 }
